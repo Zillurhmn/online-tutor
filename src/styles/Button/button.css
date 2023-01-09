@@ -1,0 +1,33 @@
+.btn-1 {
+  background-color: #e6c229;
+  padding: 13px;
+  border-radius: 5px;
+  color: black;
+  font-weight: 600;
+}
+
+.btn_log {
+  background-color: white;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border-radius: 10px;
+  color: black;
+  font-weight: 700;
+}
+.btn_sign {
+  border: 2px solid white;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border-radius: 10px;
+  color: black;
+  font-weight: 700;
+}
+
+.log {
+  background-color: #e6c229;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border-radius: 10px;
+  color: black;
+  font-weight: 700;
+}
