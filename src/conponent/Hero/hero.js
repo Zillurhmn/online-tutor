@@ -1,6 +1,7 @@
 import React from 'react';
 import s1 from '../../images/s1.png';
 import '../../styles/Button/button.css';
+import { Link } from 'react-router-dom';
 const Hero = () => {
     return (
     <div className="hero min-h-screen">
@@ -9,8 +10,8 @@ const Hero = () => {
             <div>
                     <h1 className="text-5xl font-bold pb-10">Find the <spam className='text-[#E6C229]'>Tutor </spam><br></br> for You!</h1>
                     
-                <input type="text" placeholder="Search Tutor" className="input input-bordered mr-5 border-[#E6C229] pl-5" />
-               <button className='btn-1'>Search</button>
+                <input type="search" placeholder="Search Tutor" className="input input-bordered mr-5 border-[#E6C229] pl-5" />
+               <Link to='/search'><button className='btn-1'>Search</button></Link>
             </div>
         </div>
 </div>

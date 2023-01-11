@@ -1,10 +1,8 @@
 import React from 'react';
 import p1 from '../../images/p1.png';
-import Nav from '../../conponent/Navbar/nav.js';
 const Search = () => {
     return (
         <>
-            {/* <Nav/> */}
             <div className='m-10 p-5 flex justify-center'>
             <div className="hero w-3/4 bg-base-200 rounded-2xl">
             <div className="hero-content flex-col lg:flex-row">

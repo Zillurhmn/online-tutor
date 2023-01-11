@@ -1,7 +1,10 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Navbar from '../../conponent/Navbar/navbar';
 import Footer from '../../conponent/Footer/footer';
-const signup = () => {
+
+const Signup = () => {
+    const [show, setShow] = useState(true)
+    const [submit] = useState('');
     return (
         <>
             <Navbar/>
@@ -19,10 +22,10 @@ const signup = () => {
                                         <legend>Choose Your Actor!</legend>
 
                                         <input id="student" class="peer/student" type="radio" name="status"/>
-                                        <label for="student" class="peer-checked/student:text-[#e6c229] pr-5 pl-3">Student</label>
+                                        <label onClick={()=>setShow(false)} for="student" class="peer-checked/student:text-[#e6c229] pr-5 pl-3">Student</label>
 
                                         <input id="tutor" class="peer/tutor" type="radio" name="status" />
-                                        <label for="tutor" class="peer-checked/tutor:text-[#e6c229] pl-3">Tutor</label>
+                                        <label onClick={()=>setShow(true)} for="tutor" class="peer-checked/tutor:text-[#e6c229] pl-3">Tutor</label>
 
                                 </fieldset>
 
@@ -30,32 +33,39 @@ const signup = () => {
                                         <label className="label">
                                             <span className="label-text">First Name</span>
                                         </label>
-                                        <input type="text" placeholder="first name" className="input input-bordered" />
+                                        <input type="text" placeholder="first name" className="input input-bordered" required />
                                         <label className="label">
                                             <span className="label-text">Last Name</span>
                                         </label>
-                                        <input type="text" placeholder="last name" className="input input-bordered" />
-                                    </div>
-                                    <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">NID</span>
-                                        </label>
-                                        <input type="text" placeholder="NID" className="input input-bordered" />
-                                    </div>
+                                        <input type="text" placeholder="last name" className="input input-bordered"  required/>
+                            </div>
+                            {
+                                show?
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">NID</span>
+                                    </label>
+                                    <input type="text" placeholder="NID" className="input input-bordered" required />
+                                    <label className="label">
+                                        <span className="label-text">Subject</span>
+                                    </label>
+                                    <input type="text" placeholder="subject" className="input input-bordered" required/>
+                                </div>:null
+                            }
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text">Email</span>
                                         </label>
-                                        <input type="text" placeholder="email" className="input input-bordered" />
+                                        <input type="text" placeholder="email" className="input input-bordered" required />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text">Password</span>
                                         </label>
-                                        <input type="text" placeholder="password" className="input input-bordered" />
+                                        <input type="text" placeholder="password" className="input input-bordered" required/>
                                     </div>
                                     <div className="form-control mt-6">
-                                        <button className="log">Sign Up</button>
+                                        <button value="Clear Fields" className="log" onClick={submit}>Sign Up</button>
                                     </div>
                                 </div>
                             
@@ -69,4 +79,4 @@ const signup = () => {
     );
 };
 
-export default signup;
+export default Signup;
