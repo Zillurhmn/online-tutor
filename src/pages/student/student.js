@@ -5,9 +5,9 @@ import Footer from '../../conponent/Footer/footer';
 const Student = () => {
     return (
         <div>
-            <Nav_stu />
+            {/* <Nav_stu /> */}
             <Hero />
-            <Footer/>
+            {/* <Footer/> */}
         </div>
     );
 };

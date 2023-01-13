@@ -1,13 +1,49 @@
 import React, { useState } from 'react';
 import Navbar from '../../conponent/Navbar/navbar';
 import Footer from '../../conponent/Footer/footer';
+import { useForm } from 'react-hook-form';
+import { getData } from '../../conponent/lib/baseService';
+import Cookies from 'js-cookie';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [submit] = useState('');
+    const [student,setStudent] = useState();
+    const {
+    handleSubmit,
+    control,
+    reset,
+    register,
+    formState: { errors },
+  } = useForm();
+
+     const onSubmit=(data)=>{
+       
+    //     Cookies.set("role", res?.data?.role, { expires: 1 }),
+    //     Cookies.set("email", res?.data?.email, { expires: 1 }),
+    //     Cookies.set("name", res?.data?.name, { expires: 1 }),
+    //     Cookies.set("expiry", res?.data?.expiry);
+    //   navigate("/", { replace: true });
+// console.log("my form data is = ",data);
+const res = getData(`studentlogin?email=${data?.email}&password=${data?.password}`);
+ res.then(data => {
+    setStudent(data.data)
+        // console.log("my login response is ", data);
+    })
+    .catch(error => {
+       console.log("error");
+    });
+
+    if(student.length>0){
+        Cookies.set("token", student.id, { expires: 1 })
+    }
+reset();
+
+
+  }
     return (
         <>
-        <Navbar/>
+        {/* <Navbar/> */}
     <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="text-center lg:text-left">
@@ -16,7 +52,16 @@ const Login = () => {
             </div>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <div className="card-body">
-                    <div className="form-control">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                                    <label className=''>Enter Your Email:</label>
+                                    <input type="email" {...register("email",{ required: true}) }  className="input input-bordered mb-5 mt-3" />
+                                   
+                                     <label className=''>Enter Your Password:</label>
+                                    <input type="password" {...register("password")} required className="input input-bordered mb-5 mt-3" />
+                                  
+                                    <input  type="submit" value={"LogIn"} className='w-32 h-10 border-0 rounded font-semibold bg-button-bg text-black hover:bg-[#ddc660] hover:text-white cursor-pointer mt-5 ' />
+                                    </form>
+                    {/* <div className="form-control">
                     <label className="label" htmlFor="email">
                         <span className="label-text">Email</span>
                     </label>
@@ -33,12 +78,12 @@ const Login = () => {
                     </div>
                     <div className="form-control mt-6">
                     <button className="log" value="Clear" onClick={submit} >Login</button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
             </div>
-            <Footer/>
+            {/* <Footer/> */}
             </>
     );
 };

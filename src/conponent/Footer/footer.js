@@ -2,7 +2,7 @@ import React from 'react';
 import navpic from '../../images/a.jpg';
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
-const footer = () => {
+const Footer = () => {
   return (
       <>
   <footer className="footer p-10 bg-neutral text-neutral-content lg:justify-between">
@@ -29,4 +29,4 @@ const footer = () => {
     );
 };
 
-export default footer;
+export default Footer;

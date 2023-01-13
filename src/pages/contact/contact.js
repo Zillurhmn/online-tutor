@@ -13,7 +13,7 @@ const Contact = () => {
     
         return (
             <>
-                <Navbar/>
+                {/* <Navbar/> */}
                 <div className="hero min-h-screen">
                     <div className="hero-content flex-col lg:flex-row-reverse lg:justify-between container mx-auto">
                         <div className="grid flex-grow card bg-base-100 rounded-box justify-start items-start">
@@ -56,7 +56,7 @@ const Contact = () => {
                 </div>
                 </div>
                 </div>
-                <Footer/>
+                {/* <Footer/> */}
         
             </>
         );

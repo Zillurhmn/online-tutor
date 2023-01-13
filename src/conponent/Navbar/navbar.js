@@ -13,6 +13,7 @@ const Navbar = () => {
                         <Link className='pr-5 text-[#262626] font-semibold text-lg' to="/">Home</Link>
                         <Link className='pr-5 text-[#262626]  font-semibold text-lg' to="/contact">Contact Us</Link>
                         <Link className='pr-5 text-[#262626]  font-semibold text-lg' to="/about">About Us</Link>
+                        <Link className='pr-5 text-[#262626] font-semibold text-lg' to="/student">Deshboard</Link>
                         <Link className='pr-5 text-[#262626] font-bold text-lg btn_log' to="/login">Login</Link>
                         <Link className='pr-5 text-[#262626] font-bold text-lg btn_sign' to="/signup">SignUp</Link>
                 </div>

@@ -6,7 +6,7 @@ class About extends Component {
     render() {
         return (
             <>                
-            <Navbar/>
+            {/* <Navbar/> */}
             <div className="hero min-h-screen">
                     <div className="hero-content flex-col lg:flex-row-reverse lg:justify-between container mx-auto">
                         <img src={about1} className="max-w-sm rounded-lg"/>
@@ -16,7 +16,7 @@ class About extends Component {
                             </div>
                     </div>
                 </div>
-                <Footer/>
+                {/* <Footer/> */}
                             </>
                     );
                 }
