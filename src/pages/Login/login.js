@@ -4,11 +4,16 @@ import Footer from '../../conponent/Footer/footer';
 import { useForm } from 'react-hook-form';
 import { getData } from '../../conponent/lib/baseService';
 import Cookies from 'js-cookie';
+import { useSelector, useDispatch } from 'react-redux'
+import { setUser } from '../../feature/login/loginSlice';
+import { useNavigate } from 'react-router-dom';
+// import { setUser } from './loginSlice'
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [submit] = useState('');
     const [student,setStudent] = useState();
+    const navigate = useNavigate()
     const {
     handleSubmit,
     control,
@@ -16,6 +21,9 @@ const Login = () => {
     register,
     formState: { errors },
   } = useForm();
+
+  const login = useSelector((state) => state.login.user)
+  const dispatch = useDispatch()
 
      const onSubmit=(data)=>{
        
@@ -28,6 +36,9 @@ const Login = () => {
 const res = getData(`studentlogin?email=${data?.email}&password=${data?.password}`);
  res.then(data => {
     setStudent(data.data)
+    dispatch(setUser(data.data))
+    
+    navigate('/')
         // console.log("my login response is ", data);
     })
     .catch(error => {
