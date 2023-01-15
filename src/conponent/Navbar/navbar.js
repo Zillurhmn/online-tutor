@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../images/a.jpg';
-import { Link, redirect, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/Button/button.css';
 
 const Navbar = ({isLoggedin,HandleUserLog}) => {
@@ -26,7 +26,7 @@ const Navbar = ({isLoggedin,HandleUserLog}) => {
                         isLoggedin ?
                             <>
                                 <img src="https://placeimg.com/80/80/people" alt='img' className='rounded-full w-10'/>
-                                <Link className='pr-5 text-[#262626] font-bold text-lg btn_log' to="/home">
+                                <Link className='pr-5 text-[#262626] font-bold text-lg btn_log' to="/">
                                     <span onClick={handleLogOut}>logout</span></Link>
                             </>
                             :
