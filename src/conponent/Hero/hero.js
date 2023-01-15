@@ -6,7 +6,7 @@ const Hero = () => {
     return (
     <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse lg:justify-between container mx-auto">
-            <img src={s1} className="max-w-sm rounded-lg" />
+            <img src={s1} className="max-w-sm rounded-lg" alt='Img'/>
             <div>
                     <h1 className="text-5xl font-bold pb-10">Find the <spam className='text-[#E6C229]'>Tutor </spam><br></br> for You!</h1>
                     

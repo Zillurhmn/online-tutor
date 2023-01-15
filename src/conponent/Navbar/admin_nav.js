@@ -6,9 +6,9 @@ const Navbar = () => {
     return (
         <>
             <nav className="navbar md:flex lg:justify-between  bg-[#E6C229] px-8">
-            <Link className="md:flex" to="/">
-                <img src={logo} height={400} width={150} alt="" />
-            </Link>
+                <Link className="md:flex" to="/">
+                    <img src={logo} height={400} width={150} alt="" />
+                </Link>
                 <div className="flex">
                         <Link className='pr-5 text-[#262626] font-semibold text-lg active:bg-white' to="/admin">Dashboard</Link>
                         <Link className='pr-5 text-[#262626]  font-semibold text-lg' to="/contact">Contact Us</Link>
@@ -24,7 +24,6 @@ const Navbar = () => {
                 </div>
                 
             </nav>
-            
         </>
     );
 };
