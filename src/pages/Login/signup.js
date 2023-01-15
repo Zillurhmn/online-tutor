@@ -1,8 +1,4 @@
-import React,{useState} from 'react';
-import Navbar from '../../conponent/Navbar/navbar';
-import Footer from '../../conponent/Footer/footer';
-import { useForm } from 'react-hook-form';
-import { useHistory } from "react-router-dom";
+import React from 'react';
 
 const Signup = () => {
   

@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
-import Navbar from '../../conponent/Navbar/navbar';
-import Footer from '../../conponent/Footer/footer';
-import { useNavigate } from 'react-router-dom';
-// import { setUser } from './loginSlice'
-const Login = () => {
-    
-    // const navigate = useNavigate()
-//   const login = useSelector((state) => state.login.user)
-//   const dispatch = useDispatch()
+import { redirect, useNavigate } from 'react-router-dom';
 
+const Login = ({HandleUserLog,isLoggedin}) => {
+    const navigate = useNavigate();
+
+    const [loginSucced, setloginSucced] = useState(false)
+    
+
+    const loginSubmit = e =>{
+        
+        e.preventDefault();
+        console.log(e.target.email.value);
+        console.log(e.target.password.value);
+        e.target.email.value = "";
+        e.target.password.value = "";
+        
+        setloginSucced(true);
+        HandleUserLog(true);
+        navigate("/dashboard")
+        
+    }
+   
   return (
         <>
-        {/* <Navbar/> */}
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
@@ -20,9 +31,15 @@ const Login = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">
-                            <form >
-                                <input type="email" className="input input-bordered mb-5 mt-3" />
-                                <input type="password" required className="input input-bordered mb-5 mt-3" />
+                            <form onSubmit={loginSubmit}>
+                                <label htmlFor="email">Enter Email</label>
+                                <br />
+                                <input id="email" type="email" className="input input-bordered mb-5 mt-3" required placeholder='Email' />
+                                <br />
+                                <label htmlFor="pasword">Enter Password</label>
+                                <br />
+                                <input id='password' type="password"  className="input input-bordered mb-5 mt-3" suggested="current-password" required placeholder='Password'/>
+                                <br />
                                 <input  type="submit" value={"LogIn"} className='w-32 h-10 border-0 rounded font-semibold bg-button-bg text-black hover:bg-[#ddc660] hover:text-white cursor-pointer mt-5 ' />
                             </form>
                         </div>

@@ -1,17 +1,14 @@
-
-import RouteList from './router';
+import React from 'react';
+import Webpages from './pages/webpages/Webpages';
 import './styles/Button/button.css';
 import './styles/style.css';
 
-
-
-function App() {
+const App = () => {
   return (
     <>
-      <RouteList/>
+      <Webpages/>
     </>
-   
   );
-}
+};
 
 export default App;

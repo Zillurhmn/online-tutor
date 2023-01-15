@@ -2,35 +2,28 @@
 import React, { useState } from 'react';
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
-import Navbar from '../../conponent/Navbar/navbar';
-import Footer from '../../conponent/Footer/footer';
-const Contact = () => {
-        const [name, setName] = useState('');
-        const [email, setEmail] = useState('');
-        const [message, setMessage] = useState('');
-        const [submit] = useState('');
 
+const Contact = () => {
     
         return (
             <>
-                {/* <Navbar/> */}
                 <div className="hero min-h-screen">
                     <div className="hero-content flex-col lg:flex-row-reverse lg:justify-between container mx-auto">
                         <div className="grid flex-grow card bg-base-100 rounded-box justify-start items-start">
-                        <div  className='p-20 text-2xl'>
-                            <h2 className='text-[#e6c229]'>Address</h2>
-                            <p>City University,Khagan,Savar</p>
-                            <p>+0880123456789</p>
-                            <p className='text-[#e6c229] pt-10 pb-5'>Follow Us</p>
-                            <div className='inline-flex'>
-                            <spam className='pr-5'><FaFacebook /></spam>
-                            <spam><FaInstagramSquare/></spam>
+                            <div  className='p-20 text-2xl'>
+                                <h2 className='text-[#e6c229]'>Address</h2>
+                                <p>City University,Khagan,Savar</p>
+                                <p>+0880123456789</p>
+                                <p className='text-[#e6c229] pt-10 pb-5'>Follow Us</p>
+                                <div className='inline-flex'>
+                                <span className='pr-5'><FaFacebook /></span>
+                                <span><FaInstagramSquare/></span>
+                                </div>
                             </div>
-                        </div>
-                    </div>   
+                        </div>   
                         <div>
                         <div className='p-10 rounded-box shadow-2xl'>
-                        <form >
+                        {/* <form >
                         <h2 className='text-4xl text-slate-100 mb-10'>Contact Us</h2>
                         <div className="mb-3">
                             <label className="form-label text-slate-100" htmlFor="name">
@@ -51,13 +44,11 @@ const Contact = () => {
                             <textarea className="form-control w-96 pl-5 py-2" id="message" placeholder="Your message" value={message} onChange={e => setMessage(e.target.value)} required />
                         </div> 
                         <button className='btn-1' value="Clear Fields" onClick={submit}>Send Message</button>    
-                    </form>
+                    </form> */}
+                     </div>
+                        </div>
+                    </div>
                 </div>
-                </div>
-                </div>
-                </div>
-                {/* <Footer/> */}
-        
             </>
         );
 };
