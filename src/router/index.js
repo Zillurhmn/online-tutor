@@ -10,13 +10,16 @@ import Contact from "../pages/contact/contact";
 import Navbar from "../conponent/Navbar/navbar";
 import Footer from "../conponent/Footer/footer";
 import PrivateRoute from "./PrivateRoute";
+import { useState } from "react";
 
 
 const RouteList = () => {
+  //User Info should be here
+  const [userLogin, setUserLogin] = useState(false);
   return (
     <div>
-       <BrowserRouter>
-       <Navbar/>
+      <BrowserRouter>
+        <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="search" element={<Search/>} />
@@ -25,17 +28,12 @@ const RouteList = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<Admin />} />
-        
-           <Route
-                element={<PrivateRoute/>}
-              >
+          <Route element={<PrivateRoute/>}>
                  <Route path="/student" element={<Student />} />
-              </Route>
-      </Routes>
-
-      <Footer/>
-     
-    </BrowserRouter>
+          </Route>
+        </Routes>
+        <Footer/>
+      </BrowserRouter>
     </div>
   );
 };
