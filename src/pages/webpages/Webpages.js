@@ -20,7 +20,7 @@ const Webpages = () => {
 
     return (
         <>
-            <Navbar/>
+            <Navbar isLoggedin={isLoggedin} HandleUserLog={HandleUserLog}/>
             
             <Routes>
                 <Route path="/" element={<Home />} />
