@@ -33,7 +33,7 @@ const Login = () => {
     //     Cookies.set("expiry", res?.data?.expiry);
     //   navigate("/", { replace: true });
 // console.log("my form data is = ",data);
-// edit branch
+// edit branch succed
 const res = getData(`studentlogin?email=${data?.email}&password=${data?.password}`);
  res.then(data => {
     setStudent(data.data)
