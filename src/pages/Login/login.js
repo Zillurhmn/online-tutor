@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '../../conponent/Navbar/navbar';
 import Footer from '../../conponent/Footer/footer';
-import { useSelector, useDispatch } from 'react-redux'
-import { setUser } from '../../feature/login/loginSlice';
 import { useNavigate } from 'react-router-dom';
 // import { setUser } from './loginSlice'
 const Login = () => {
