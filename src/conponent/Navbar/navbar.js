@@ -30,7 +30,7 @@ const Navbar = ({isLoggedin,HandleUserLog}) => {
                     {
                         isLoggedin ?
                             <>
-                                <img src="https://placeimg.com/80/80/people" alt='img' className='rounded-full w-10'/>
+                                <img src="https://placeimg.com/80/80/people" alt='img' className='rounded-full w-10 mr-4'/>
                                 <Link className='pr-5 text-[#262626] font-bold text-lg btn_log' to="/">
                                     <span onClick={handleLogOut}>logout</span></Link>
                             </>
