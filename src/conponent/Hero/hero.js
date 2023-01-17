@@ -4,9 +4,16 @@ import s1 from '../../images/s1.png';
 import p1 from '../../images/p1.png';
 import '../../styles/Button/button.css';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Hero = () => {
+const Hero = ({isLoggedin}) => {
+    const navigate = useNavigate();
+
+    const checkLogin =()=>{
+        isLoggedin?
+            navigate('/profile')
+        :   navigate('/login')
+    }
     return (
     <div >
         <div className="hero ">
@@ -34,10 +41,8 @@ const Hero = () => {
                         <h1 className='text-lg'> Subject</h1>
                         <p className="py-6 text-justify ">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
-                    <div className='flex gap-6'>
-                        <Link to='/contact'>
-                            <button className="btn-1">Contact</button>
-                        </Link>
+                    <div className='flex gap-6' >
+                        <button className="btn-1" onClick={checkLogin}>Enroll Now</button>
                         <button className="btn-1">View Profile</button>
                     </div>
                 </div>
@@ -50,10 +55,8 @@ const Hero = () => {
                         <h1 className='text-lg'> Subject</h1>
                         <p className="py-6 text-justify ">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
-                    <div className='flex gap-6'>
-                        <Link to='/contact'>
-                            <button className="btn-1">Contact</button>
-                        </Link>
+                    <div className='flex gap-6' >
+                        <button className="btn-1" onClick={checkLogin}>Enroll Now</button>
                         <button className="btn-1">View Profile</button>
                     </div>
                 </div>
@@ -66,10 +69,8 @@ const Hero = () => {
                         <h1 className='text-lg'> Subject</h1>
                         <p className="py-6 text-justify ">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
-                    <div className='flex gap-6'>
-                        <Link to='/contact'>
-                            <button className="btn-1">Contact</button>
-                        </Link>
+                    <div className='flex gap-6' >
+                        <button className="btn-1" onClick={checkLogin}>Enroll Now</button>
                         <button className="btn-1">View Profile</button>
                     </div>
                 </div>
@@ -82,14 +83,13 @@ const Hero = () => {
                         <h1 className='text-lg'> Subject</h1>
                         <p className="py-6 text-justify ">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
-                    <div className='flex gap-6'>
-                        <Link to='/contact'>
-                            <button className="btn-1">Contact</button>
-                        </Link>
+                    <div className='flex gap-6' >
+                        <button className="btn-1" onClick={checkLogin}>Enroll Now</button>
                         <button className="btn-1">View Profile</button>
                     </div>
                 </div>
             </div>
+           
         </div>
     </div>
     );

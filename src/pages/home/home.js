@@ -1,10 +1,10 @@
 import React from 'react';
 import Hero from '../../conponent/Hero/hero';
 
-const Home = () => {
+const Home = ({isLoggedin}) => {
     return (
         <>
-            <Hero /> 
+            <Hero isLoggedin={isLoggedin} /> 
         </>
     );
 };

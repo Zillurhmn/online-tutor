@@ -12,6 +12,7 @@ import Login from '../Login/login';
 import Signup from '../Login/signup';
 import Search from '../tutor_search/search';
 import Blog from '../blogs/blogs';
+import Profile from './../profile/Profile'
 
 const Webpages = () => {
     const [isLoggedin, setIsLoggedin] = useState(false);
@@ -23,8 +24,8 @@ const Webpages = () => {
             <Navbar isLoggedin={isLoggedin} HandleUserLog={HandleUserLog}/>
             
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="search" element={<Search/>} />
+                <Route path="/" element={<Home isLoggedin={isLoggedin} />} />
+                <Route path="search" element={<Search isLoggedin={isLoggedin}/>} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="about" element={<About />} />
                 <Route path="/dashboard" element={<Dashboard />} />
@@ -34,6 +35,7 @@ const Webpages = () => {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/blogs" element={<Blog />} />
+                <Route path="/profile" element={<Profile/>} />
                 {/* <Route element={<PrivateRoute/>}>
                         <Route path="/student" element={<Student />} />
                 </Route> */}
