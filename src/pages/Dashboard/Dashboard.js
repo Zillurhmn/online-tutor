@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiFillSetting } from 'react-icons/ai';
 import { BiSearchAlt } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import p1 from './../../images/p1.png'
+
+
 const Dashboard = () => {
+    const [courseCompleteStatus, setCourseCompleteStatus] = useState(false)
+    const handleComplete =()=>{
+        setCourseCompleteStatus(true)
+    }
     return (
         <div>
             <div className='flex justify-around bg-slate-100 p-5'>
@@ -53,12 +59,17 @@ const Dashboard = () => {
                                         <p> 4 Star (23reviews)</p>
                                     </div>
                                     <br />
-                                    <button className="btn-1">Go to Class</button>
-                                    <button className="p-3 rounded-md mx-2 text-slate-900  bg-green-600">Mark Complete</button>
+                                    {
+                                        !courseCompleteStatus &&
+                                        <button className="btn-1">Go to Class</button>
+                                    }
+                                    <button onClick={handleComplete} className="p-3 rounded-md mx-2 text-slate-900  bg-green-600" >
+                                        { !courseCompleteStatus && 'Mark Complete'}
+                                        { courseCompleteStatus && 'Complete'}
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
