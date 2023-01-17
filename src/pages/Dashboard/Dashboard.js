@@ -44,11 +44,11 @@ const Dashboard = () => {
                 </div>
             </div>
 {/* ---------Student Enronment Section Ends Here--------------------------- */}
-                <div className='flex flex-col gap-4'>
-                    <div className='flex justify-around gap-4 p-5'>
-                        <h1 className='text-xl font-semibold w-[300px] '>Your Post</h1>
-                        <Link to={'/create-post'}>Create Post +</Link>
-                    </div>
+            <div className='flex flex-col gap-4'>
+                <div className='flex justify-around gap-4 p-5'>
+                    <h1 className='text-xl font-semibold w-[300px] '>Your Post</h1>
+                    <Link to={'/create-post'}>Create Post +</Link>
+                </div>
 {/* -------------------All the Enrolled / post  will be here ----------------------------*/}
                 <div>
                     <Post user={'tutor'} name={"Md. Z Rahman"} subject={"subject here"}
