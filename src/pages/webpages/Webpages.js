@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate, redirect, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Footer from '../../conponent/Footer/footer';
 import Navbar from '../../conponent/Navbar/navbar';
 import PrivateRoute from '../../router/PrivateRoute';

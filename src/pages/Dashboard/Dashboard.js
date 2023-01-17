@@ -28,47 +28,37 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div>
-{/* -------------------All the Results will be here ----------------------------*/}
+{/* -------------------All the Enrolled / post  will be here ----------------------------*/}
                     <div className='m-10 p-5 flex flex-col justify-center items-center gap-10'>
                         <div className="hero w-3/4 bg-base-200 rounded-2xl">
                             <div className="hero-content flex-col lg:flex-row">
                                 <img src={p1} className="h-w-64 w-64" alt='img' />
-                                <div>
+                                <div className='py-5'>
                                     <h1 className="text-xl font-bold text-[#e6c229]">Md. Zillur Rahman</h1>
                                     <h1 className='text-lg'> Subject</h1>
+                                    <h1 className='text-lg font-bold'> $23</h1>
                                     <p className="py-2">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                                     <p className="py text-sm">Education Background</p>
                                     <br />
-                                    <button className="btn-1">Go to Class</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="hero w-3/4 bg-base-200 rounded-2xl">
-                            <div className="hero-content flex-col lg:flex-row">
-                                <img src={p1} className="h-w-64 w-64" alt='img' />
-                                <div>
-                                    <h1 className="text-xl font-bold text-[#e6c229]">Md. Zillur Rahman</h1>
-                                    <h1 className='text-lg'> Subject</h1>
-                                    <p className="py-2">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                                    <p className="py text-sm">Education Background</p>
+                                    <div className='flex text-sm text-slate-600 py-2 gap-1'>
+                                        <p className='font-bold'>Class Time :</p>
+                                        <p> 12:00pm - 02:30pm</p>
+                                    </div>
+                                    <div className='flex text-sm text-slate-600 py-2 gap-1'>
+                                        <p className='font-bold'>Total Time :</p>
+                                        <p>3hour</p>
+                                    </div>
+                                    <div className='flex text-sm text-slate-600 py-2 gap-1'>
+                                        <p className='font-bold'>Total Review :</p>
+                                        <p> 4 Star (23reviews)</p>
+                                    </div>
                                     <br />
                                     <button className="btn-1">Go to Class</button>
+                                    <button className="p-3 rounded-md mx-2 text-slate-900  bg-green-600">Mark Complete</button>
                                 </div>
                             </div>
                         </div>
-                        <div className="hero w-3/4 bg-base-200 rounded-2xl">
-                            <div className="hero-content flex-col lg:flex-row">
-                                <img src={p1} className="h-w-64 w-64" alt='img' />
-                                <div>
-                                    <h1 className="text-xl font-bold text-[#e6c229]">Md. Zillur Rahman</h1>
-                                    <h1 className='text-lg'> Subject</h1>
-                                    <p className="py-2">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                                    <p className="py text-sm">Education Background</p>
-                                    <br />
-                                    <button className="btn-1">Go to Class</button>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
