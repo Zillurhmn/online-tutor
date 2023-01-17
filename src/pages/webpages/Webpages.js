@@ -36,6 +36,7 @@ const Webpages = () => {
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/blogs" element={<Blog />} />
                 <Route path="/profile" element={<Profile/>} />
+                <Route path="/create-post" element={<Profile/>} />
                 {/* <Route element={<PrivateRoute/>}>
                         <Route path="/student" element={<Student />} />
                 </Route> */}
