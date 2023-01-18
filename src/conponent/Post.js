@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import p1 from './../images/p1.png'
 
-const Post = ({user, name, subject, amount, description, classTime, totalTime, totalReview, star, classLink, courseCompleteStatus, handleComplete}) => {
-    
-    
+const Post = ({user, name, subject, amount, description,
+     classTime, totalTime, totalReview, star,
+     classLink, courseCompleteStatus, handleComplete}) => {
 
     return (
         <div>
@@ -50,9 +50,6 @@ const Post = ({user, name, subject, amount, description, classTime, totalTime, t
                                         </>
                                         
                                     }
-                                    <br />
-                                    
-
                                 </div>
                             </div>
                         </div>

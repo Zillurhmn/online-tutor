@@ -35,7 +35,7 @@ const Webpages = () => {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/blogs" element={<Blog />} />
-                <Route path="/profile" element={<Profile/>} />
+                <Route path="/profile/:id" element={<Profile/>} />
                 <Route path="/create-post" element={<Profile/>} />
                 {/* <Route element={<PrivateRoute/>}>
                         <Route path="/student" element={<Student />} />

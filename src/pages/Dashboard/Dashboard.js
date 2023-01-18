@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { AiFillSetting } from 'react-icons/ai';
 import { BiSearchAlt } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
-import p1 from './../../images/p1.png'
 import Post from './../../conponent/Post'
 
 const Dashboard = () => {
