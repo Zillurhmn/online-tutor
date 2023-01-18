@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = ({HandleUserLog,isLoggedin }) => {
@@ -6,31 +6,43 @@ const Signup = ({HandleUserLog,isLoggedin }) => {
     if(isLoggedin){navigate('/dashboard')}
     
     const [tutor , setTutor] = useState(false)
+    const [NewUser, setNewUser] = useState(null);
 
     const handleRegister = (e)=>{
         e.preventDefault();
-
         const status = e.target.status.value 
         const name = e.target.name.value 
         const email = e.target.email.value 
         const password = e.target.password.value 
         const confirmedPassword = e.target.confirmedPassword.value
-         
-        console.log("Status ", status)
-        console.log("name ",name)
-        if (status === 'tutor' ){
-            const subject = e.target.subject.value
-            console.log("subject ",subject)
-        }
-        console.log("email ", email)
-        console.log("password ", password)
-        console.log("Confirmpassword ", confirmedPassword)
-        console.log("Setpassword ", password);
-
+      
         if(password === confirmedPassword && status){
-        alert("Password Confirmed") 
-        HandleUserLog(true) 
-        navigate('/dashboard')
+            if (status === 'tutor' ){
+                const subject = e.target.subject.value
+                setNewUser({
+                    name: name,
+                    email: email,
+                    password: password,
+                    user: status,
+                    subject: subject ,
+                })
+            }else{
+                setNewUser({
+                    name: name,
+                    email: email,
+                    password: password,
+                    user: status,
+                })
+            }
+            console.log("new User data", NewUser);
+            fetch("http://localhost:5000/newUser",{
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-type': 'application/json'},
+                body: JSON.stringify(NewUser),
+            })
+              .then((res) => res.json())
+              .then( (result) => console.log("Result for post ",result))
         }else{
             alert("Fill out full details || Password didn't Match! Try again")
         }
