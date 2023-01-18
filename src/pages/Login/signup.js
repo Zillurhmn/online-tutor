@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Signup = () => {
 
     const navigate = useNavigate();
+    const [tutor , setTutor] = useState(false)
 
     const handleRegister = (e)=>{
         e.preventDefault();
@@ -19,7 +20,7 @@ const Signup = () => {
         console.log("password ", password)
         console.log("Confirmpassword ", confirmedPassword)
         console.log("Setpassword ", password);
-        (password === confirmedPassword)? alert("Password Confirmed"): alert("Password didn't Match! Try again")
+        (password === confirmedPassword)? alert("Password Confirmed") : alert("Password didn't Match! Try again")
     }
     return (
         <>
@@ -34,15 +35,25 @@ const Signup = () => {
                             <form onSubmit={handleRegister}>
                                 <fieldset className='mb-8'>
                                     <legend>Choose Your Actor!</legend>
-                                    <input id="student" className="peer/student" type="radio" name="status" value={'student'}/>
-                                    <label onClick={()=>console.log("student")} htmlFor="student" className="peer-checked/student:text-[#e6c229] pr-5 pl-3">Student</label>
-                                    <input id="tutor" className="peer/tutor" type="radio" name="status" value={'tutor'}/>
-                                    <label onClick={()=>console.log('tutor')} htmlFor="tutor" className="peer-checked/tutor:text-[#e6c229] pl-3">Tutor</label>
+                                    <input id="student" onClick={()=>setTutor(false)} className="peer/student" type="radio" name="status" value={'student'}/>
+                                    <label  htmlFor="student" className="peer-checked/student:text-[#e6c229] pr-5 pl-3">Student</label>
+                                    <input id="tutor" onClick={()=>setTutor(true)} className="peer/tutor" type="radio" name="status" value={'tutor'}/>
+                                    <label  htmlFor="tutor" className="peer-checked/tutor:text-[#e6c229] pl-3">Tutor</label>
                                 </fieldset>
                                 <label >Enter Your Full Name:</label>
                                 <br />
                                 <input type="text" name='name' placeholder='Name'  className="input input-bordered mb-5 mt-3" required/>
                                 <br />
+                                {
+                                    tutor && 
+                                    <>
+                                        <label >Expertise Subject:</label>
+                                        <br />
+                                        <input type="text" name='subject' placeholder='Subject'  className="input input-bordered mb-5 mt-3" required/>
+                                        <br />
+                                    </>
+                                }
+                                
                                 <label >Enter Your Email:</label>
                                 <br />
                                 <input type="email" name='email' placeholder='Email' required className="input input-bordered mb-5 mt-3" />
