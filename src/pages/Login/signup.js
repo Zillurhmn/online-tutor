@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Signup = () => {
-
+const Signup = ({HandleUserLog,isLoggedin }) => {
     const navigate = useNavigate();
+    if(isLoggedin){navigate('/dashboard')}
+    
     const [tutor , setTutor] = useState(false)
 
     const handleRegister = (e)=>{
@@ -25,7 +26,14 @@ const Signup = () => {
         console.log("password ", password)
         console.log("Confirmpassword ", confirmedPassword)
         console.log("Setpassword ", password);
-        (password === confirmedPassword)? alert("Password Confirmed") : alert("Password didn't Match! Try again")
+
+        if(password === confirmedPassword && status){
+        alert("Password Confirmed") 
+        HandleUserLog(true) 
+        navigate('/dashboard')
+        }else{
+            alert("Fill out full details || Password didn't Match! Try again")
+        }
     }
     return (
         <>

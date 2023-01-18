@@ -32,7 +32,7 @@ const Webpages = () => {
                 {/* <Route path="/login" element={<Login setUserLogin={setUserLogin()} />} /> */}
                 
                 <Route path="/login" element={<Login HandleUserLog={HandleUserLog} isLoggedin={isLoggedin}/>} />
-                <Route path="/signup" element={<Signup />} />
+                <Route path="/signup" element={<Signup HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} />} />
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/blogs" element={<Blog />} />
                 <Route path="/profile/:id" element={<Profile/>} />
