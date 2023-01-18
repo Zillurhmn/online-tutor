@@ -13,9 +13,14 @@ const Signup = () => {
         const name = e.target.name.value 
         const email = e.target.email.value 
         const password = e.target.password.value 
-        const confirmedPassword = e.target.confirmedPassword.value 
+        const confirmedPassword = e.target.confirmedPassword.value
+         
         console.log("Status ", status)
         console.log("name ",name)
+        if (status === 'tutor' ){
+            const subject = e.target.subject.value
+            console.log("subject ",subject)
+        }
         console.log("email ", email)
         console.log("password ", password)
         console.log("Confirmpassword ", confirmedPassword)
