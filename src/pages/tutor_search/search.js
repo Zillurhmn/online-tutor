@@ -3,11 +3,13 @@ import p1 from '../../images/p1.png';
 const Search = () => {
     return (
         <>
-            <div>
-                Search Bar here
+            <div className='flex items-center justify-center m-10'>
+                <input type="search" placeholder="Search Tutor" 
+                    className="input input-bordered mr-5 border-[#E6C229] pl-5" />
+                <button className='btn-1'>Search</button>
             </div>
+            <div className='ml-10 p-5 text-3xl font-bold'>Search Result:</div>
             <div>
-                Search Result Here
                 <div className='m-10 p-5 flex justify-center'>
                     <div className="hero w-3/4 bg-base-200 rounded-2xl">
                         <div className="hero-content flex-col lg:flex-row">

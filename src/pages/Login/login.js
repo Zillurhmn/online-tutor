@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { redirect, useNavigate } from 'react-router-dom';
 
-const Login = ({HandleUserLog,isLoggedin}) => {
+const Login = ({HandleUserLog,isLoggedin,user,setUser}) => {
     const navigate = useNavigate();
 
     const [loginSucced, setloginSucced] = useState(false)
@@ -10,14 +10,35 @@ const Login = ({HandleUserLog,isLoggedin}) => {
     const loginSubmit = e =>{
         
         e.preventDefault();
-        console.log(e.target.email.value);
-        console.log(e.target.password.value);
+        if(!e.target.user.value){alert("Please submit the checkbox")}
+        const tempUser = {
+            email: e.target.email.value,
+            password: e.target.password.value,
+            user: e.target.user.value
+        }
+        // console.log("Temp User-", tempUser)
         e.target.email.value = "";
         e.target.password.value = "";
-        
-        setloginSucced(true);
-        HandleUserLog(true);
-        navigate("/dashboard")
+        fetch(`http://localhost:5000/login/${tempUser.user}`,{
+            method: 'POST',
+            headers: { 
+                'Accept': 'application/json',
+                'Content-type': 'application/json', 
+                "Access-Control-Allow-Origin": "*"
+            },
+            body: JSON.stringify(tempUser),
+        }).then(res=> alert(res.status))
+          .then((res) => res.json() )
+          .then(userData => {
+            console.log("user DAta from server", userData)
+            setUser(userData)
+            if(user){
+                setloginSucced(true)
+                HandleUserLog(true)
+                navigate("/dashboard")
+            }
+        })
+          .catch(e=> console.log("Error is", e))
         
     }
    
@@ -40,6 +61,13 @@ const Login = ({HandleUserLog,isLoggedin}) => {
                                 <br />
                                 <input id='password' type="password"  className="input input-bordered mb-5 mt-3" suggested="current-password" required placeholder='Password'/>
                                 <br />
+                                <fieldset className='mb-8'>
+                                    <legend>Choose Your Actor!</legend>
+                                    <input id="student"  className="peer/student" type="radio" name="user" value={'student'}/>
+                                    <label  htmlFor="student" className="peer-checked/student:text-[#e6c229] pr-5 pl-3">Student</label>
+                                    <input id="tutor"  className="peer/tutor" type="radio" name="user" value={'tutor'}/>
+                                    <label  htmlFor="tutor" className="peer-checked/tutor:text-[#e6c229] pl-3">Tutor</label>
+                                </fieldset>
                                 <input  type="submit" value={"LogIn"} className='w-32 h-10 border-0 rounded font-semibold bg-button-bg text-black hover:bg-[#ddc660] hover:text-white cursor-pointer mt-5 ' />
                             </form>
                         </div>
