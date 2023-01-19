@@ -13,27 +13,31 @@ import Signup from '../Login/signup';
 import Search from '../tutor_search/search';
 import Blog from '../blogs/blogs';
 import Profile from './../profile/Profile'
+import { useEffect } from 'react';
 
 const Webpages = () => {
+    
+    const [user, setUser] = useState(null);
+
     const [isLoggedin, setIsLoggedin] = useState(false);
 
     const HandleUserLog=(a)=>setIsLoggedin(a);
+    const [Allposts, setAllposts] = useState(null)
 
+ 
     return (
         <>
-            <Navbar isLoggedin={isLoggedin} HandleUserLog={HandleUserLog}/>
+            <Navbar isLoggedin={isLoggedin} HandleUserLog={HandleUserLog}  setUser={setUser} />
             
             <Routes>
-                <Route path="/" element={<Home isLoggedin={isLoggedin} />} />
+                <Route path="/" element={<Home isLoggedin={isLoggedin} Allposts={Allposts} setAllposts={setAllposts} />} />
                 <Route path="search" element={<Search isLoggedin={isLoggedin}/>} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="about" element={<About />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                {/* <Route path="/login" element={<Login setUserLogin={setUserLogin()} />} /> */}
-                
-                <Route path="/login" element={<Login HandleUserLog={HandleUserLog} isLoggedin={isLoggedin}/>} />
-                <Route path="/signup" element={<Signup HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} />} />
-                <Route path="/admin" element={<Admin />} />
+                <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser}/>} />                
+                <Route path="/login" element={<Login HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
+                <Route path="/signup" element={<Signup HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
+                <Route path="/admin" element={<Admin user={user} setUser={setUser} />} />
                 <Route path="/blogs" element={<Blog />} />
                 <Route path="/profile/:id" element={<Profile/>} />
                 <Route path="/create-post" element={<Profile/>} />

@@ -6,7 +6,7 @@ import '../../styles/Button/button.css';
 
 import { Link, useNavigate } from 'react-router-dom';
 
-const Hero = ({isLoggedin}) => {
+const Hero = ({isLoggedin,Allposts,setAllposts,reloadPosts,setReloadPosts}) => {
     const navigate = useNavigate();
 
     const checkLogin =()=>{
@@ -32,6 +32,9 @@ const Hero = ({isLoggedin}) => {
             </div>
         </div>
 {/* ------------------Profile Card View ------------------------------------------------------------------- */}
+        {
+            (!Allposts) && setReloadPosts(reloadPosts +1)
+        }
         <div className='m-[4%] p-5 flex justify-around gap-3'>
             <div className="hero w-[25%] bg-base-200 rounded-2xl shadow-md">
                 <div className="hero-content flex flex-col">

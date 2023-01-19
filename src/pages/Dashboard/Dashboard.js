@@ -4,7 +4,7 @@ import { BiSearchAlt } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import Post from './../../conponent/Post'
 
-const Dashboard = () => {
+const Dashboard = (user,setUser) => {
     const [courseCompleteStatus, setCourseCompleteStatus] = useState(false)
     const handleComplete =()=>{
         setCourseCompleteStatus(true)
@@ -13,8 +13,8 @@ const Dashboard = () => {
         <div>
             <div className='flex justify-around bg-slate-100 p-5'>
                 <div className='w-[300px]'>
-                    <h1 className='text-xl font-semibold'>Your Name</h1>
-                    <p>Short Bio Lorem ipsum dolor sit amet.</p>
+                    <h1 className='text-xl font-semibold'>{user.name || "Hi, User"}</h1>
+                    <p>{user.bio || "Short Bio Lorem ipsum dolor sit amet."}</p>
                     
                 </div>
                 <div>
