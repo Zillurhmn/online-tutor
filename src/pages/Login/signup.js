@@ -1,7 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Signup = () => {
-  
+const Signup = ({HandleUserLog,isLoggedin }) => {
+    const navigate = useNavigate();
+    if(isLoggedin){navigate('/dashboard')}
+    
+    const [tutor , setTutor] = useState(false)
+    const [NewUser, setNewUser] = useState(null);
+
+    const handleRegister = (e)=>{
+        e.preventDefault();
+        const status = e.target.status.value 
+        const name = e.target.name.value 
+        const email = e.target.email.value 
+        const password = e.target.password.value 
+        const confirmedPassword = e.target.confirmedPassword.value
+      
+        if(password === confirmedPassword && status){
+            if (status === 'tutor' ){
+                const subject = e.target.subject.value
+                setNewUser({
+                    name: name,
+                    email: email,
+                    password: password,
+                    user: status,
+                    subject: subject ,
+                })
+            }else{
+                setNewUser({
+                    name: name,
+                    email: email,
+                    password: password,
+                    user: status,
+                })
+            }
+            console.log("new User data", NewUser);
+            fetch(`http://localhost:5000/newUser/${NewUser.user}`,{
+                method: 'POST',
+                headers: { 
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json', 
+                    "Access-Control-Allow-Origin": "*"
+                },
+                body: JSON.stringify(NewUser),
+            })
+              .then((res) => console.log(res))
+              .catch(e=> console.log("Error is", e))
+              
+        }else{
+            alert("Fill out full details || Password didn't Match! Try again")
+        }
+    }
     return (
         <>
             <div className="hero min-h-screen bg-base-200">
@@ -12,26 +61,41 @@ const Signup = () => {
                     </div>
                     <div className="p-10 card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className='w-full max-w-sm '>
-                            <fieldset className='mb-8'>
+                            <form onSubmit={handleRegister}>
+                                <fieldset className='mb-8'>
                                     <legend>Choose Your Actor!</legend>
-
-                                    <input id="student" class="peer/student" type="radio" name="status"/>
-                                    <label onClick={()=>console.log("student")} for="student" class="peer-checked/student:text-[#e6c229] pr-5 pl-3">Student</label>
-
-                                    <input id="tutor" class="peer/tutor" type="radio" name="status" />
-                                    <label onClick={()=>console.log('tutor')} for="tutor" class="peer-checked/tutor:text-[#e6c229] pl-3">Tutor</label>
-
-                            </fieldset>
-                            <form >
-                                <label className=''>Enter Your Full Name:</label>
-                                <input type="text"   className="input input-bordered mb-5 mt-3" />
-                                <label className=''>Enter Your Email:</label>
-                                <input type="email"  required className="input input-bordered mb-5 mt-3" />
-                                <label className=''>Enter Your Password:</label>
-                                <input type="password"  required className="input input-bordered mb-5 mt-3" />
-                                <label className=''>Confirm Password:</label>
-                                <input type="password" required className="input input-bordered mb-5 mt-3" />
-                                <input  type="submit" className='w-32 h-10 border-0 rounded font-semibold bg-button-bg text-black hover:bg-[#ddc660] hover:text-white cursor-pointer mt-5 ' />
+                                    <input id="student" onClick={()=>setTutor(false)} className="peer/student" type="radio" name="status" value={'student'}/>
+                                    <label  htmlFor="student" className="peer-checked/student:text-[#e6c229] pr-5 pl-3">Student</label>
+                                    <input id="tutor" onClick={()=>setTutor(true)} className="peer/tutor" type="radio" name="status" value={'tutor'}/>
+                                    <label  htmlFor="tutor" className="peer-checked/tutor:text-[#e6c229] pl-3">Tutor</label>
+                                </fieldset>
+                                <label >Enter Your Full Name:</label>
+                                <br />
+                                <input type="text" name='name' placeholder='Name'  className="input input-bordered mb-5 mt-3" required/>
+                                <br />
+                                {
+                                    tutor && 
+                                    <>
+                                        <label >Expertise Subject:</label>
+                                        <br />
+                                        <input type="text" name='subject' placeholder='Subject'  className="input input-bordered mb-5 mt-3" required/>
+                                        <br />
+                                    </>
+                                }
+                                
+                                <label >Enter Your Email:</label>
+                                <br />
+                                <input type="email" name='email' placeholder='Email' required className="input input-bordered mb-5 mt-3" />
+                                <br />
+                                <label >Enter Your Password:</label>
+                                <br />
+                                <input type="password" name='password' placeholder='Password' required  className="input input-bordered mb-5 mt-3" />
+                                <br />
+                                <label >Confirm Password:</label>
+                                <br />
+                                <input type="password" name='confirmedPassword' placeholder='Confirm Password'  className="input input-bordered mb-5 mt-3" required/>
+                                <br />
+                                <input   type="submit" className='w-32 h-10 border-0 rounded font-semibold bg-button-bg text-black hover:bg-[#ddc660] hover:text-white cursor-pointer mt-5 ' />
                             </form>
                         </div>
                     </div>

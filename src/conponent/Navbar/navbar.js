@@ -3,11 +3,12 @@ import logo from '../../images/a.jpg';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import '../../styles/Button/button.css';
 
-const Navbar = ({isLoggedin,HandleUserLog}) => {
+const Navbar = ({isLoggedin,HandleUserLog,setUser}) => {
     const navigate = useNavigate();
     
     const handleLogOut=()=>{
         HandleUserLog(false)
+        setUser(null)
         navigate("/")
     }
     return (
