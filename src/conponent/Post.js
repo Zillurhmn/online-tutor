@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import p1 from './../images/p1.png'
+import React from 'react';
+// import p1 from './../images/p1.png'
 
 const Post = ({user, name, subject, amount, description,
      classTime, totalTime, totalReview, star,
@@ -11,7 +11,7 @@ const Post = ({user, name, subject, amount, description,
             <div className='m-10 p-5 flex flex-col justify-center items-center gap-10'>
                         <div className="hero w-3/4 bg-base-200 rounded-2xl">
                             <div className="hero-content flex-col lg:flex-row">
-                                <img src={p1} className="h-w-64 w-64" alt='img' />
+                                {/* <img src={p1} className="h-w-64 w-64" alt='img' /> */}
                                 <div className='py-5'>
                                     <h1 className="text-xl font-bold text-[#e6c229]">{name}</h1>
                                     <h1 className='text-lg'> {subject}</h1>

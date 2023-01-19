@@ -21,15 +21,16 @@ const Webpages = () => {
 
     const HandleUserLog=(a)=>setIsLoggedin(a);
     const [Allposts, setAllposts] = useState(null)
+//Search Query value store-------------------------------------
+    const [searchQuery, setSearchQuery] = useState("")
 
- 
     return (
         <>
             <Navbar isLoggedin={isLoggedin} HandleUserLog={HandleUserLog}  setUser={setUser} />
             
             <Routes>
-                <Route path="/" element={<Home isLoggedin={isLoggedin} Allposts={Allposts} setAllposts={setAllposts} />} />
-                <Route path="search" element={<Search isLoggedin={isLoggedin}/>} />
+                <Route path="/" element={<Home setSearchQuery={setSearchQuery} isLoggedin={isLoggedin} Allposts={Allposts} setAllposts={setAllposts} />} />
+                <Route path="search" element={<Search Allposts={Allposts} searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin}/>} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="about" element={<About />} />
                 <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} isLoggedin={isLoggedin}/>} />                

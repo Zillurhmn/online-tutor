@@ -6,7 +6,7 @@ import Post from './../../conponent/Post'
 
 const Dashboard = (user, setUser,isLoggedin) => {
     
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     
 
     const [courseCompleteStatus, setCourseCompleteStatus] = useState(false)
@@ -14,21 +14,24 @@ const Dashboard = (user, setUser,isLoggedin) => {
         setCourseCompleteStatus(true)
     }
     console.log("Dashboard User",user)
-    const actor = user.user[0].user;
+    const userObj = user.user[0];
+    const actor = userObj.user;
     console.log("Dashboard User status", actor)
 
     return (
         <div>
             <div className='flex justify-around bg-slate-100 p-5'>
                 <div className='w-[300px]'>
-                    <h1 className='text-xl font-semibold'>{user.user[0].name || "Hi, User"}</h1>
-                    <p>{user.bio || "Short Bio Lorem ipsum dolor sit amet."}</p>
-                    
+                    <h1 className='text-xl font-semibold'>Welcome to Dashboard!</h1>
+                    { userObj.name && <h1 className='text-sm py-1'><span className='font-bold '>Name: </span> {userObj.name}</h1>}
+                    { userObj.education &&   <h1 className='text-sm py-1'><span className='font-bold '>Completed: </span>{userObj.education}</h1>}
+                    {userObj.subject && <h1 className='text-sm py-1'><span className='font-bold '>Expertise: </span>{userObj.subject}</h1>}
+                    {userObj.email && <h1 className='text-sm py-1'><span className='font-bold '> Email: </span>{userObj.email}</h1>}
                 </div>
                              
                 <div>
                     <div className='m-4'>
-                        <AiFillSetting className=' text-3xl'/>
+                        <AiFillSetting className=' text-3xl cursor-pointer'/>
                     </div>
                 </div>
             </div>
@@ -58,18 +61,19 @@ const Dashboard = (user, setUser,isLoggedin) => {
             {
                 (actor === 'tutor') &&
                 <div className='flex flex-col gap-4'>
-                <div className='flex justify-around gap-4 p-5'>
-                    <h1 className='text-xl font-semibold w-[300px] '>Your Post</h1>
-                    <Link to={'/create-post'}>Create Post +</Link>
-                </div>
-{/* -------------------All the Enrolled / post  will be here ----------------------------*/}
-                <div>
-                    <Post user={'tutor'} name={"Md. Z Rahman"} subject={"subject here"}
-                        amount={"$223"} description={"Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi."}  
-                        backgroud={"Educational Background"} complete={"true/false"}
-                        classTime={"12:00pm - 02:30pm"} totalTime={"6hour"} totalReview={"12"} star={"3"} 
-                        classLink={"classlinkwillbe given"}  handleComplete={handleComplete} courseCompleteStatus={courseCompleteStatus}/>
-                </div>
+                    <div className='flex justify-around gap-4 p-5'>
+                        <h1 className='text-xl font-semibold w-[300px] '>Your Post</h1>
+                        {/* <Link to={'/create-post'}>Create Post +</Link> */}
+                        <h1>Create Post+</h1>
+                    </div>
+    {/* -------------------All the Enrolled / post  will be here ----------------------------*/}
+                    <div>
+                        <Post user={'tutor'} name={"Md. Z Rahman"} subject={"subject here"}
+                            amount={"$223"} description={"Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi."}  
+                            backgroud={"Educational Background"} complete={"true/false"}
+                            classTime={"12:00pm - 02:30pm"} totalTime={"6hour"} totalReview={"12"} star={"3"} 
+                            classLink={"classlinkwillbe given"}  handleComplete={handleComplete} courseCompleteStatus={courseCompleteStatus}/>
+                    </div>
                 </div>
             }
 
