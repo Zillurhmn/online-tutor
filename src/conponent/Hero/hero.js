@@ -6,14 +6,9 @@ import '../../styles/Button/button.css';
 
 import { Link, useNavigate } from 'react-router-dom';
 
-const Hero = ({isLoggedin,Allposts,setAllposts,reloadPosts,setReloadPosts}) => {
-    const navigate = useNavigate();
+const Hero = ({Allposts,setAllposts,reloadPosts,setReloadPosts}) => {
 
-    const checkLogin =()=>{
-        isLoggedin?
-            navigate('/profile')
-        :   navigate('/login')
-    }
+    
     return (
     <div >
         <div className="hero ">
@@ -45,7 +40,7 @@ const Hero = ({isLoggedin,Allposts,setAllposts,reloadPosts,setReloadPosts}) => {
                         <p className="py-6 text-justify ">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
                     <div className='flex gap-6' >
-                        <button className="btn-1" onClick={checkLogin}>Enroll Now</button>
+                        <button className="btn-1" >Enroll Now</button>
                         <button className="btn-1">View Profile</button>
                     </div>
                 </div>
@@ -59,7 +54,7 @@ const Hero = ({isLoggedin,Allposts,setAllposts,reloadPosts,setReloadPosts}) => {
                         <p className="py-6 text-justify ">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
                     <div className='flex gap-6' >
-                        <button className="btn-1" onClick={checkLogin}>Enroll Now</button>
+                        <button className="btn-1" >Enroll Now</button>
                         <button className="btn-1">View Profile</button>
                     </div>
                 </div>
@@ -73,7 +68,7 @@ const Hero = ({isLoggedin,Allposts,setAllposts,reloadPosts,setReloadPosts}) => {
                         <p className="py-6 text-justify ">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
                     <div className='flex gap-6' >
-                        <button className="btn-1" onClick={checkLogin}>Enroll Now</button>
+                        <button className="btn-1" >Enroll Now</button>
                         <button className="btn-1">View Profile</button>
                     </div>
                 </div>
@@ -87,7 +82,7 @@ const Hero = ({isLoggedin,Allposts,setAllposts,reloadPosts,setReloadPosts}) => {
                         <p className="py-6 text-justify ">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
                     <div className='flex gap-6' >
-                        <button className="btn-1" onClick={checkLogin}>Enroll Now</button>
+                        <button className="btn-1" >Enroll Now</button>
                         <button className="btn-1">View Profile</button>
                     </div>
                 </div>

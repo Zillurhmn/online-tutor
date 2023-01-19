@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { redirect, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 const Login = ({HandleUserLog,isLoggedin,user,setUser}) => {
     const navigate = useNavigate();
@@ -27,16 +27,15 @@ const Login = ({HandleUserLog,isLoggedin,user,setUser}) => {
                 "Access-Control-Allow-Origin": "*"
             },
             body: JSON.stringify(tempUser),
-        }).then(res=> alert(res.status))
+        })
+            // .then(res => alert(res.status))
           .then((res) => res.json() )
           .then(userData => {
             console.log("user DAta from server", userData)
             setUser(userData)
-            if(user){
-                setloginSucced(true)
-                HandleUserLog(true)
-                navigate("/dashboard")
-            }
+            setloginSucced(true)
+            HandleUserLog(true)
+            navigate("/dashboard")
         })
           .catch(e=> console.log("Error is", e))
         

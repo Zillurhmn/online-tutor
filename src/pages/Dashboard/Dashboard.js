@@ -1,22 +1,31 @@
 import React, { useState } from 'react';
 import { AiFillSetting } from 'react-icons/ai';
 import { BiSearchAlt } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Post from './../../conponent/Post'
 
-const Dashboard = (user,setUser) => {
+const Dashboard = (user, setUser,isLoggedin) => {
+    
+    const navigate = useNavigate()
+    
+
     const [courseCompleteStatus, setCourseCompleteStatus] = useState(false)
     const handleComplete =()=>{
         setCourseCompleteStatus(true)
     }
+    console.log("Dashboard User",user)
+    const actor = user.user[0].user;
+    console.log("Dashboard User status", actor)
+
     return (
         <div>
             <div className='flex justify-around bg-slate-100 p-5'>
                 <div className='w-[300px]'>
-                    <h1 className='text-xl font-semibold'>{user.name || "Hi, User"}</h1>
+                    <h1 className='text-xl font-semibold'>{user.user[0].name || "Hi, User"}</h1>
                     <p>{user.bio || "Short Bio Lorem ipsum dolor sit amet."}</p>
                     
                 </div>
+                             
                 <div>
                     <div className='m-4'>
                         <AiFillSetting className=' text-3xl'/>
@@ -24,7 +33,9 @@ const Dashboard = (user,setUser) => {
                 </div>
             </div>
 {/* ---------Student Enronment Section Starts Here--------------------------- */}
-            <div className='flex flex-col gap-4'>
+            {
+                (actor === 'student') &&
+                <div className='flex flex-col gap-4'>
                 <div className='flex justify-around gap-4 p-5'>
                     <h1 className='text-xl font-semibold w-[300px] '>Your Enrollment</h1>
                     <div>
@@ -41,9 +52,12 @@ const Dashboard = (user,setUser) => {
                         classTime={"12:00pm - 02:30pm"} totalTime={"6hour"} totalReview={"12"} star={"3"} 
                         classLink={"classlinkwillbe given"} handleComplete={handleComplete} courseCompleteStatus={courseCompleteStatus} />
                 </div>
-            </div>
+                </div>
+            }
 {/* ---------Student Enronment Section Ends Here--------------------------- */}
-            <div className='flex flex-col gap-4'>
+            {
+                (actor === 'tutor') &&
+                <div className='flex flex-col gap-4'>
                 <div className='flex justify-around gap-4 p-5'>
                     <h1 className='text-xl font-semibold w-[300px] '>Your Post</h1>
                     <Link to={'/create-post'}>Create Post +</Link>
@@ -56,7 +70,9 @@ const Dashboard = (user,setUser) => {
                         classTime={"12:00pm - 02:30pm"} totalTime={"6hour"} totalReview={"12"} star={"3"} 
                         classLink={"classlinkwillbe given"}  handleComplete={handleComplete} courseCompleteStatus={courseCompleteStatus}/>
                 </div>
-            </div>
+                </div>
+            }
+
         </div>
     );
 };

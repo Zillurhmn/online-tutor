@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Footer from '../../conponent/Footer/footer';
 import Navbar from '../../conponent/Navbar/navbar';
-import PrivateRoute from '../../router/PrivateRoute';
 import About from '../about/about';
 import Admin from '../admin/admin';
 import Contact from '../contact/contact';
@@ -13,7 +12,6 @@ import Signup from '../Login/signup';
 import Search from '../tutor_search/search';
 import Blog from '../blogs/blogs';
 import Profile from './../profile/Profile'
-import { useEffect } from 'react';
 
 const Webpages = () => {
     
@@ -34,7 +32,7 @@ const Webpages = () => {
                 <Route path="search" element={<Search isLoggedin={isLoggedin}/>} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="about" element={<About />} />
-                <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser}/>} />                
+                <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} isLoggedin={isLoggedin}/>} />                
                 <Route path="/login" element={<Login HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
                 <Route path="/signup" element={<Signup HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
                 <Route path="/admin" element={<Admin user={user} setUser={setUser} />} />

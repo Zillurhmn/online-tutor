@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Signup = ({HandleUserLog,isLoggedin }) => {
+const Signup = ({HandleUserLog,isLoggedin ,user,setUser}) => {
     const navigate = useNavigate();
-    if(isLoggedin){navigate('/dashboard')}
+    // if(isLoggedin){navigate('/dashboard')}
     
     const [tutor , setTutor] = useState(false)
-    const [NewUser, setNewUser] = useState(null);
+   
 
     const handleRegister = (e)=>{
         e.preventDefault();
@@ -15,36 +15,43 @@ const Signup = ({HandleUserLog,isLoggedin }) => {
         const email = e.target.email.value 
         const password = e.target.password.value 
         const confirmedPassword = e.target.confirmedPassword.value
-      
+        let tempUser = {}
         if(password === confirmedPassword && status){
             if (status === 'tutor' ){
                 const subject = e.target.subject.value
-                setNewUser({
+                 tempUser= {
                     name: name,
                     email: email,
                     password: password,
                     user: status,
                     subject: subject ,
-                })
+                }
             }else{
-                setNewUser({
+                 tempUser= {
                     name: name,
                     email: email,
                     password: password,
                     user: status,
-                })
+                }
             }
-            console.log("new User data", NewUser);
-            fetch(`http://localhost:5000/newUser/${NewUser.user}`,{
+            console.log("new User data", tempUser);
+            fetch(`http://localhost:5000/newUser/${tempUser.user}`,{
                 method: 'POST',
                 headers: { 
                     'Accept': 'application/json',
                     'Content-type': 'application/json', 
                     "Access-Control-Allow-Origin": "*"
                 },
-                body: JSON.stringify(NewUser),
+                body: JSON.stringify(tempUser),
             })
-              .then((res) => console.log(res))
+                .then((res) => res.json())
+                .then(userData => {
+                    setUser( [userData])
+                    console.log("new user", userData)
+                    
+                    HandleUserLog(true)
+                    navigate("/dashboard")
+                })
               .catch(e=> console.log("Error is", e))
               
         }else{

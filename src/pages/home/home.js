@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Hero from '../../conponent/Hero/hero';
 
-const Home = ({isLoggedin,Allposts,setAllposts}) => {
+const Home = ({  Allposts, setAllposts }) => {
+    
     const [reloadPosts, setReloadPosts] = useState(0)
+
     useEffect(() => {
         const fetchPosts =()=>{
         fetch("http://localhost:5000/allpostdb",{
@@ -27,7 +29,7 @@ const Home = ({isLoggedin,Allposts,setAllposts}) => {
  
     return (
         <>
-            <Hero isLoggedin={isLoggedin} Allposts={Allposts}  setReloadPosts={setReloadPosts} reloadPosts={reloadPosts} /> 
+            <Hero  Allposts={Allposts}  setReloadPosts={setReloadPosts} reloadPosts={reloadPosts} /> 
         </>
     );
 };
