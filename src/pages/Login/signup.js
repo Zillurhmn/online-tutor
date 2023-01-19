@@ -35,14 +35,18 @@ const Signup = ({HandleUserLog,isLoggedin }) => {
                 })
             }
             console.log("new User data", NewUser);
-            fetch("http://localhost:5000/newUser",{
+            fetch(`http://localhost:5000/newUser/${NewUser.user}`,{
                 method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-type': 'application/json'},
+                headers: { 
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json', 
+                    "Access-Control-Allow-Origin": "*"
+                },
                 body: JSON.stringify(NewUser),
             })
-              .then((res) => res.json())
-              .then( (result) => console.log("Result for post ",result))
+              .then((res) => console.log(res))
+              .catch(e=> console.log("Error is", e))
+              
         }else{
             alert("Fill out full details || Password didn't Match! Try again")
         }
