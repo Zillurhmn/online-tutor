@@ -9,7 +9,6 @@ import Dashboard from '../Dashboard/Dashboard';
 import Home from '../home/home';
 import Login from '../Login/login';
 import Signup from '../Login/signup';
-import Search from '../tutor_search/search';
 import Blog from '../blogs/blogs';
 import Profile from './../profile/Profile'
 
@@ -20,7 +19,8 @@ const Webpages = () => {
     const [isLoggedin, setIsLoggedin] = useState(false);
 
     const HandleUserLog=(a)=>setIsLoggedin(a);
-    const [Allposts, setAllposts] = useState(null)
+    const [Allposts, setAllposts] = useState([])
+    const [randomArr, setRandomArr] = useState([])
 //Search Query value store-------------------------------------
     const [searchQuery, setSearchQuery] = useState("")
 
@@ -29,8 +29,8 @@ const Webpages = () => {
             <Navbar isLoggedin={isLoggedin} HandleUserLog={HandleUserLog}  setUser={setUser} />
             
             <Routes>
-                <Route path="/" element={<Home setSearchQuery={setSearchQuery} isLoggedin={isLoggedin} Allposts={Allposts} setAllposts={setAllposts} />} />
-                <Route path="search" element={<Search Allposts={Allposts} searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin}/>} />
+                <Route path="/" element={<Home randomArr={randomArr}  setRandomArr={setRandomArr}  searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin} Allposts={Allposts} setAllposts={setAllposts} />} />
+                {/* <Route path="search" element={<Search Allposts={Allposts} searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin}/>} /> */}
                 <Route path="contact" element={<Contact />} />
                 <Route path="about" element={<About />} />
                 <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} isLoggedin={isLoggedin}/>} />                
