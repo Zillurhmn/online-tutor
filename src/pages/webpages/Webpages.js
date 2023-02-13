@@ -21,12 +21,14 @@ const Webpages = () => {
     const HandleUserLog=(a)=>setIsLoggedin(a);
     const [Allposts, setAllposts] = useState([])
     const [randomArr, setRandomArr] = useState([])
+    const [admin, setAdmin] = useState(false);
+    const [deleteUser, setDeleteUser] = useState(null);
 //Search Query value store-------------------------------------
     const [searchQuery, setSearchQuery] = useState("")
 
     return (
         <>
-            <Navbar isLoggedin={isLoggedin} HandleUserLog={HandleUserLog}  setUser={setUser} />
+            <Navbar isLoggedin={isLoggedin} HandleUserLog={HandleUserLog}  setUser={setUser}  setAdmin={setAdmin} admin={admin} />
             
             <Routes>
                 <Route path="/" element={<Home randomArr={randomArr}  setRandomArr={setRandomArr}  searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin} Allposts={Allposts} setAllposts={setAllposts} />} />
@@ -36,7 +38,8 @@ const Webpages = () => {
                 <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} isLoggedin={isLoggedin}/>} />                
                 <Route path="/login" element={<Login HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
                 <Route path="/signup" element={<Signup HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
-                <Route path="/admin" element={<Admin user={user} setUser={setUser} />} />
+                <Route path="/admin" element={<Admin  admin={admin} setAdmin={setAdmin} isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin}/>} 
+                    deleteUser={deleteUser} setDeleteUser={setDeleteUser}  />
                 <Route path="/blogs" element={<Blog />} />
                 <Route path="/profile/:id" element={<Profile/>} />
                 <Route path="/create-post" element={<Profile/>} />

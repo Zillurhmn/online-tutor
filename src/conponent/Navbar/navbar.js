@@ -3,11 +3,12 @@ import logo from '../../images/a.jpg';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import '../../styles/Button/button.css';
 
-const Navbar = ({isLoggedin,HandleUserLog,setUser}) => {
+const Navbar = ({isLoggedin,HandleUserLog,setUser,setAdmin,admin}) => {
     const navigate = useNavigate();
     
     const handleLogOut=()=>{
         HandleUserLog(false)
+        setAdmin(false)
         setUser(null)
         navigate("/")
     }
@@ -23,7 +24,7 @@ const Navbar = ({isLoggedin,HandleUserLog,setUser}) => {
                     <NavLink className='pr-5 text-[#262626]  font-semibold text-lg' to="/contact">Contact Us</NavLink>
                     <NavLink className='pr-5 text-[#262626]  font-semibold text-lg' to="/about">About Us</NavLink>
                     {
-                        isLoggedin &&
+                        isLoggedin && !admin && 
                         <NavLink className='pr-5 text-[#262626] font-semibold text-lg' to="/dashboard">Dashboard</NavLink>
                     }
                     
