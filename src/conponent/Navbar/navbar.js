@@ -13,11 +13,11 @@ const Navbar = ({isLoggedin,HandleUserLog,setUser}) => {
     }
     return (
         <>
-            <nav className="navbar md:flex lg:justify-between  bg-[#E6C229] px-8">
+            <nav className="navbar md:flex justify-between  bg-[#E6C229] px-8">
                 <Link className="md:flex" to="/">
-                    <img src={logo} height={400} width={150} alt="" />
+                    <img src={logo} height={400} width={150} alt="logo" />
                 </Link>
-                <div className="flex-none">
+                <div className="flex">
                     
                     <NavLink className='pr-5 text-[#262626] font-semibold text-lg' to="/">Home</NavLink>
                     <NavLink className='pr-5 text-[#262626]  font-semibold text-lg' to="/contact">Contact Us</NavLink>
@@ -31,7 +31,6 @@ const Navbar = ({isLoggedin,HandleUserLog,setUser}) => {
                     {
                         isLoggedin ?
                             <>
-                                <img src="https://placeimg.com/80/80/people" alt='img' className='rounded-full w-10 mr-4'/>
                                 <Link className='pr-5 text-[#262626] font-bold text-lg btn_log' to="/">
                                     <span onClick={handleLogOut}>logout</span></Link>
                             </>

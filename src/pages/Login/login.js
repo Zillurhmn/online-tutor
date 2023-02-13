@@ -32,10 +32,16 @@ const Login = ({HandleUserLog,isLoggedin,user,setUser}) => {
           .then((res) => res.json() )
           .then(userData => {
             console.log("user DAta from server", userData)
-            setUser(userData)
-            setloginSucced(true)
-            HandleUserLog(true)
-            navigate("/dashboard")
+            if(userData){
+                setUser(userData)
+                setloginSucced(true)
+                HandleUserLog(true)
+                navigate("/dashboard")
+            }
+            else{
+                console.log(userData)
+                alert("Email or Password is not valid")
+            }
         })
           .catch(e=> console.log("Error is", e))
         
