@@ -33,9 +33,12 @@ const Dashboard = (user, setUser,isLoggedin) => {
                 </div>
                              
                 <div>
-                    <div className='m-4'>
-                        <AiFillSetting className=' text-3xl cursor-pointer'/>
-                    </div>
+                    <Link to={'/editProfile'}>
+                        <div className='m-4'>
+                            <AiFillSetting className=' text-3xl cursor-pointer hover:scale-110 hover:text-slate-500  transition-all ease-in'/>
+                        </div>
+                    </Link>
+                    
                 </div>
             </div>
 {/* ---------Student Enronment Section Starts Here--------------------------- */}
@@ -45,7 +48,7 @@ const Dashboard = (user, setUser,isLoggedin) => {
                     <div className='flex justify-around gap-4 p-5'>
                         <h1 className='text-xl font-semibold w-[300px] '>Your Enrollment</h1>
                         <div>
-                            <Link to={'/search'}>
+                            <Link to={'/'}>
                                 <BiSearchAlt className=' text-3xl hover:text-black'/>
                             </Link>
                         </div>

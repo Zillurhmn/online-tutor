@@ -11,6 +11,7 @@ import Login from '../Login/login';
 import Signup from '../Login/signup';
 import Blog from '../blogs/blogs';
 import Profile from './../profile/Profile'
+import EditProfile from '../editprofile/EditProfile';
 
 const Webpages = () => {
     
@@ -35,12 +36,13 @@ const Webpages = () => {
                 {/* <Route path="search" element={<Search Allposts={Allposts} searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin}/>} /> */}
                 <Route path="contact" element={<Contact />} />
                 <Route path="about" element={<About />} />
-                <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} isLoggedin={isLoggedin}/>} />                
+                <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} isLoggedin={isLoggedin}/>} />
+                <Route path='/editProfile' element={<EditProfile user={user} setUser={setUser} isLoggedin={isLoggedin} /> } />                
                 <Route path="/login" element={<Login HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
                 <Route path="/signup" element={<Signup HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
                 <Route path="/admin" element={<Admin  admin={admin} setAdmin={setAdmin} isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin}/>} 
                     deleteUser={deleteUser} setDeleteUser={setDeleteUser}  />
-                <Route path="/blogs" element={<Blog />} />
+                {/* <Route path="/blogs" element={<Blog />} /> */}
                 <Route path="/profile/:id" element={<Profile/>} />
                 <Route path="/create-post" element={<Profile/>} />
                 {/* <Route element={<PrivateRoute/>}>
