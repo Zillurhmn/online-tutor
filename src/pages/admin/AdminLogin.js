@@ -18,7 +18,7 @@ const AdminLogin = ({setAdmin,setIsLoggedin}) => {
       }
     return (
         <div className='text-center m-10'>
-            <form onSubmit={handleAdmin} className='border p-4'>
+            <form onSubmit={handleAdmin} className='border p-4 bg-slate-300'>
                 <label htmlFor="email" className='form-label text-slate-800 pb-2 text-lg'>Email</label><br /><br />
                 <input name='email' type="email" required className=' w-96 pl-5 py-2'/><br /><br />
                 <label htmlFor="password" className='form-label text-slate-800 pb-2 text-lg'>Password</label><br /><br />

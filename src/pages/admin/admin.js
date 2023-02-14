@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AdminLogin from './AdminLogin';
+import AdminPayment from './AdminPayment';
 import AdminView from './AdminView';
 
 function Admin({admin,setAdmin,setIsLoggedin,isLoggedin ,setDeleteUser,deleteUser}) {
@@ -32,17 +33,16 @@ useEffect(() => {
   if(admin){
     fetchStudentsData()
     fetchTutorsData()
-    console.log(allStudentdb)
-    console.log(alltutordb)
+    // console.log(allStudentdb)
+    // console.log(alltutordb)
   }
 }, [admin])
 return (
     <>
         <h1 className=' text-3xl font-bold text-center p-4'>Admin Dashboard</h1>
-        <h1 className=' text-3xl font-bold text-center p-4'>Total Payment Collected : 1232 TK</h1>
-        <p className=' text-3xl font-bold text-center p-4'>
-          <button className='btn'>WithDraw Payment</button>
-        </p>
+       {
+        admin &&  <AdminPayment />
+       } 
         <div className='border round-xl m-10'>
             {
             !admin && <AdminLogin setAdmin={setAdmin} setIsLoggedin={setIsLoggedin}/>
