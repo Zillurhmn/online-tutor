@@ -36,7 +36,9 @@ const Login = ({HandleUserLog,isLoggedin,user,setUser}) => {
                 setUser(userData)
                 setloginSucced(true)
                 HandleUserLog(true)
-                navigate("/dashboard")
+                if(user){ navigate("/dashboard") ; console.log("user is true")}
+                else{console.log("user is false")}
+                
             }
             else{
                 console.log(userData)

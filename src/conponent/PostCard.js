@@ -1,6 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const PostCard = ({obj,index}) => {
+    const navigate = useNavigate();
+    const handleContactTutor = () => {
+        navigate(`/contact/tutor/${obj._id}`)
+    }
     return (
         <div>
             <div key={index} className="hero m-4 w-[300px] bg-base-200 rounded-2xl shadow-md">
@@ -17,7 +22,7 @@ const PostCard = ({obj,index}) => {
                             </div>
                             <div className='flex gap-6' >
                                 <button  className="btn-1" >Enroll Now</button>
-                                <button  className="btn-1">View Profile</button>
+                                <button  className="btn-1" onClick={handleContactTutor}>Contact Tutor</button>
                             </div>
                         </div>
                     </div>

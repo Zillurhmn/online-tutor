@@ -12,6 +12,8 @@ import Signup from '../Login/signup';
 import Blog from '../blogs/blogs';
 import Profile from './../profile/Profile'
 import EditProfile from '../editprofile/EditProfile';
+import ContactTutor from '../contactTutor/ContactTutor';
+import CreatePost from '../createPost/CreatePost';
 
 const Webpages = () => {
     
@@ -44,7 +46,8 @@ const Webpages = () => {
                     deleteUser={deleteUser} setDeleteUser={setDeleteUser}  />
                 {/* <Route path="/blogs" element={<Blog />} /> */}
                 <Route path="/profile/:id" element={<Profile/>} />
-                <Route path="/create-post" element={<Profile/>} />
+                <Route path="/create-post" element={<CreatePost user={user[0]}/>} />
+                <Route path='/contact/tutor/:postId' element={<ContactTutor Allposts={Allposts} />} />
                 {/* <Route element={<PrivateRoute/>}>
                         <Route path="/student" element={<Student />} />
                 </Route> */}

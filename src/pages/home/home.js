@@ -79,19 +79,10 @@ const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery,setRandomArr,rand
         }
         
     }
-    // const activeRandomArr = ()=>{
-    //     const arr = randomArrGenerator(Allposts)
-    //     setRandomArr(arr);
-    //     console.log("Final Random Array" ,randomArr)
-    // }
-  
+    
     
     return (
         <>
-            {/* <Hero searchQuery={searchQuery} setSearchQuery={setSearchQuery} 
-            Allposts={Allposts}  setReloadPosts={setReloadPosts} reloadPosts={reloadPosts}
-            randomPostArr={randomPostArr} />  */}
-            
             <div >
                 <div className="hero ">
                     <div className="hero-content flex flex-col lg:flex-row-reverse lg:justify-between container mx-auto">
@@ -125,12 +116,6 @@ const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery,setRandomArr,rand
                         !results && Allposts && Allposts.map((obj,i)=> (<PostCard obj={obj} index={i} key={i}/>)) 
                     }
                     {
-                        // !results && Allposts   && activeRandomArr()
-                    }
-                    {
-                        // !results && Allposts  && Allposts.map((obj,i)=>{})
-                    }
-                    {
                     // ========================= Search Query All Results=============================================
                         searchQuery && results && results.map((obj,i)=><PostCard obj={obj} index={i} key={i}/>)
                     }
@@ -147,13 +132,12 @@ const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery,setRandomArr,rand
                                     </div>
                                     <div className='flex gap-6' >
                                         <button className="btn-1" >Enroll Now</button>
-                                        <button className="btn-1">View Profile</button>
+                                        <button className="btn-1">Contact Tutor</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     }
-
                 </div>
             </div> 
         </>

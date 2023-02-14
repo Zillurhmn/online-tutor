@@ -7,20 +7,19 @@ import Post from './../../conponent/Post'
 
 const Dashboard = (user, setUser,isLoggedin) => {
     
-    // const navigate = useNavigate()
-    
-
+    const navigate = useNavigate()
     const [courseCompleteStatus, setCourseCompleteStatus] = useState(false)
     const handleComplete =()=>{
         setCourseCompleteStatus(true)
     }
-    // console.log("Dashboard User",user)
     const userObj = user.user[0];
-    console.log(" User Full DAta",userObj)
-    console.log(" User id",userObj._id)
+    // console.log(" User Full DAta",userObj)
+    // console.log(" User id",userObj._id)
     const actor = userObj.user;
-    console.log("Dashboard User status", actor)
-
+    // console.log("Dashboard User status", actor)
+    const handleCreatePost = ()=>{
+        navigate("/create-post")
+    }
     return (
         <div>
             <div className='flex justify-around bg-slate-100 p-5'>
@@ -83,7 +82,7 @@ const Dashboard = (user, setUser,isLoggedin) => {
                     <div className='flex justify-around gap-4 p-5'>
                         <h1 className='text-xl font-semibold w-[300px] '>Your Post</h1>
                         {/* <Link to={'/create-post'}>Create Post +</Link> */}
-                        <h1>Create Post+</h1>
+                        <button className='btn' onClick={handleCreatePost}>Create Post</button>
                     </div>
     {/* -------------------All the Enrolled / post  will be here ----------------------------*/}
                     <div>
