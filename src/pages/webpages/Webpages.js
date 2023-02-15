@@ -18,7 +18,7 @@ import CreatePost from '../createPost/CreatePost';
 const Webpages = () => {
     
     const [user, setUser] = useState(null);
-
+//login true or false
     const [isLoggedin, setIsLoggedin] = useState(false);
 
     const HandleUserLog=(a)=>setIsLoggedin(a);
@@ -28,7 +28,7 @@ const Webpages = () => {
     const [deleteUser, setDeleteUser] = useState(null);
 //Search Query value store-------------------------------------
     const [searchQuery, setSearchQuery] = useState("")
-
+    const [newPost, setNewPost] = useState(null);
     return (
         <>
             <Navbar isLoggedin={isLoggedin} HandleUserLog={HandleUserLog}  setUser={setUser}  setAdmin={setAdmin} admin={admin} />
@@ -46,7 +46,7 @@ const Webpages = () => {
                     deleteUser={deleteUser} setDeleteUser={setDeleteUser}  />
                 {/* <Route path="/blogs" element={<Blog />} /> */}
                 <Route path="/profile/:id" element={<Profile/>} />
-                <Route path="/create-post" element={<CreatePost user={user[0]}/>} />
+                <Route path="/create-post" element={<CreatePost user={user} setNewPost={setNewPost} newPost={newPost}/>} />
                 <Route path='/contact/tutor/:postId' element={<ContactTutor Allposts={Allposts} />} />
                 {/* <Route element={<PrivateRoute/>}>
                         <Route path="/student" element={<Student />} />
