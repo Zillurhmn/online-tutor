@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {  useNavigate } from 'react-router-dom';
 
 const Login = ({HandleUserLog,isLoggedin,user,setUser}) => {
     const navigate = useNavigate();
 
     const [loginSucced, setloginSucced] = useState(false)
+    useEffect(() => {
+      if(user){
+        navigate('/dashboard')
+      }
+    }, [user,loginSucced])
     
 
     const loginSubmit = e =>{
