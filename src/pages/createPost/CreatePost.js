@@ -34,7 +34,7 @@ const CreatePost = ({user,newPost,setNewPost}) => {
             subject:subject,
         }
         console.log(NewPostObj)
-
+        setNewPost(NewPostObj)
         fetch(`http://localhost:5000/CreatePost`,{
             method: 'POST',
             headers: { 
@@ -46,13 +46,10 @@ const CreatePost = ({user,newPost,setNewPost}) => {
         })
             .then((res) => res.json())
             .then(userData => {
-                // setUser( [userData])
                 console.log("new user", userData)
-                
-                // HandleUserLog(true)
-                // navigate("/dashboard")
+                navigate("/dashboard")
             })
-          .catch(e=> alert("Error is", e))
+          .catch(e=> console.log("Error is", e))
 
 
 
@@ -61,7 +58,8 @@ const CreatePost = ({user,newPost,setNewPost}) => {
         e.target.amount.value = "";
         e.target.topicDescription.value = "";
         e.target.keyword.value = "";
-
+        
+        setNewPost(null)
 
     }
     return (
@@ -72,9 +70,9 @@ const CreatePost = ({user,newPost,setNewPost}) => {
                     <form onSubmit={handleNewPost} >
                         <input placeholder={"Title"} name='topicName'  type="text" className="input input-bordered mb-5 mt-3 w-[90%]" required  />
                         <br />
-                        <input type="text" placeholder={"Total Time"} name='totalTime'  className="input input-bordered mb-5 mt-3 w-[90%]" required />
+                        <input type="number" placeholder={"Total Time"} name='totalTime'  className="input input-bordered mb-5 mt-3 w-[90%]" required />
                         <br />
-                        <input type="text" placeholder={"Price"} name='amount'  className="input input-bordered mb-5 mt-3 w-[90%]"  required />
+                        <input type="number" placeholder={"Price"} name='amount'  className="input input-bordered mb-5 mt-3 w-[90%]"  required />
                         <br />
                         <input type="text" placeholder={"Keyword"} name={'keyword'}  className="input input-bordered mb-5 mt-3 w-[90%]"  required />
                         <br />

@@ -5,29 +5,7 @@ import PostCard from '../../conponent/PostCard';
 
 import s1 from './../../images/s1.png'
 
-// const randomArrGenerator=(arr)=>{
-//     if(arr.length){
-//         console.log(" arr  length is ", arr.length);
-//         let i = 0 ;
-//         let countarr = [];
-//         let newarr = [];
-//         while(i<6){
-//             countarr[i] = Math.ceil(Math.random(arr.length)*10)
-//             i++;
-//         }
-//         i=0
-//         while(i<6){
-//             newarr[i] = arr[countarr[i]];
-//             i++;
-//         }
-//         console.log("new arr  is ", newarr);
-//         return newarr;
-//     }else{
-//         console.log(" arr is empty")
-//     }
-// }
-
-const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery,setRandomArr,randomArr }) => {
+const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery, newPost }) => {
     
     const [reloadPosts, setReloadPosts] = useState(0)
     const [results, setResults] = useState();
@@ -40,16 +18,16 @@ const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery,setRandomArr,rand
             'Content-Type': 'application/json'
             } ,
         })
-        // .then(res=> alert(" Fetching All post Data Status - ",res.status))
         .then((res) => res.json())
         .then( (result) => setAllposts(result))
-        //   console.log( "All",Allposts)
     }
     
     useEffect(() => {
         if(!Allposts.length){fetchPosts() }
+        if(!newPost){fetchPosts()}
+        // fetchPosts()
         console.log( "All posts ",Allposts)
-    }, [reloadPosts])
+    }, [reloadPosts,newPost])
     
     const onValueChange = (e) => {
         let value = e.target.value.toLocaleLowerCase();
@@ -58,7 +36,6 @@ const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery,setRandomArr,rand
     }
   
     const enqury = ()=>{
-        console.log("Button clicked")
         const compareArr = Allposts;
         if(searchQuery){
             const arr = compareArr.filter((obj)=>{
