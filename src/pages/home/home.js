@@ -38,15 +38,16 @@ const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery, newPost }) => {
     const enqury = ()=>{
         const compareArr = Allposts;
         if(searchQuery){
+            console.log("compare arr",compareArr)
             const arr = compareArr.filter((obj)=>{
-                return(
-                        obj.name.toLocaleLowerCase().includes(searchQuery)||
+               return (
+                        obj.name?.toLocaleLowerCase().includes(searchQuery)||
                         obj.subject.toLocaleLowerCase().includes(searchQuery) ||
-                        obj.topicName.toLocaleLowerCase().includes(searchQuery) ||
-                        obj.education.toLocaleLowerCase().includes(searchQuery) ||
-                        obj.totalTime.toLocaleLowerCase().includes(searchQuery) ||
-                        obj.topicDescription.toLocaleLowerCase().includes(searchQuery) ||
-                        obj.keyword.toLocaleLowerCase().includes(searchQuery)
+                        obj.topicName?.toLocaleLowerCase().includes(searchQuery) ||
+                        obj.education?.toLocaleLowerCase().includes(searchQuery) ||
+                        obj.totalTime?.toLocaleLowerCase().includes(searchQuery) ||
+                        obj.topicDescription?.toLocaleLowerCase().includes(searchQuery) ||
+                        obj.keyword?.toLocaleLowerCase().includes(searchQuery)
                 )
             })
             console.log("new Arr", arr)
