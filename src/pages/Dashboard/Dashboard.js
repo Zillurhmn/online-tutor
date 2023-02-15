@@ -21,7 +21,7 @@ const Dashboard = (user, setUser,isLoggedin) => {
         navigate("/create-post")
     }
     return (
-        <div>
+        <div  className=' min-h-screen'>
             <div className='flex justify-around bg-slate-100 p-5'>
                 <div className='w-[300px]'>
                     <h1 className='text-xl font-semibold'>Welcome to Dashboard!</h1>
@@ -85,13 +85,23 @@ const Dashboard = (user, setUser,isLoggedin) => {
                         <button className='btn' onClick={handleCreatePost}>Create Post</button>
                     </div>
     {/* -------------------All the Enrolled / post  will be here ----------------------------*/}
-                    <div>
+                    {
+                        actor === "tutor" && 
+                        <div>
+                            <div className='text-center text-lg mb-80'>
+                                You do not have any post yet! Post Now!
+                            </div>
+
+                        </div>
+                    }
+
+                    {/* <div>
                         <Post user={'tutor'} name={"Md. Z Rahman"} subject={"subject here"}
                             amount={"$223"} description={"Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi."}  
                             backgroud={"Educational Background"} complete={"true/false"}
                             classTime={"12:00pm - 02:30pm"} totalTime={"6hour"} totalReview={"12"} star={"3"} 
                             classLink={"classlinkwillbe given"}  handleComplete={handleComplete} courseCompleteStatus={courseCompleteStatus}/>
-                    </div>
+                    </div> */}
                 </div>
             }
 

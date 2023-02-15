@@ -10,20 +10,28 @@ const CreatePost = ({user,newPost,setNewPost}) => {
       
     }, [])
     
-    // const obj = user[0];
     const handleNewPost = (e)=>{
+        const obj = user[0];
         e.preventDefault();
-        let topicName = e.target.topicName.value;
-        let totalTime = e.target.totalTime.value;
-        let amount = e.target.amount.value;
-        let topicDescription = e.target.topicDescription.value;
-        let keyword = e.target.keyword.value;
-
+        const topicName = e.target.topicName.value;
+        const totalTime = e.target.totalTime.value;
+        const amount = e.target.amount.value;
+        const topicDescription = e.target.topicDescription.value;
+        const keyword = e.target.keyword.value;
+        const tutorId = obj._id ;
+        const name = obj.name;
+        const education = obj.education;
+        const subject = obj.subject;
         const NewPostObj = {
             topicName : topicName,
             totalTime : totalTime,
             amount : amount,
             topicDescription: topicDescription,
+            keyword:keyword,
+            tutorId:tutorId,
+            name:name,
+            education:education,
+            subject:subject,
         }
         console.log(NewPostObj)
 

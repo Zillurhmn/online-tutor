@@ -75,7 +75,8 @@ const Login = ({HandleUserLog,isLoggedin,user,setUser}) => {
                                     <input id="tutor"  className="peer/tutor" type="radio" name="user" value={'tutor'}/>
                                     <label  htmlFor="tutor" className="peer-checked/tutor:text-[#e6c229] pl-3">Tutor</label>
                                 </fieldset>
-                                <input  type="submit" value={"LogIn"} className='w-32 h-10 border-0 rounded font-semibold bg-button-bg text-black hover:bg-[#ddc660] hover:text-white cursor-pointer mt-5 ' />
+                                <input  type="submit" value={"login"} className='w-32 h-10 border-0 rounded font-semibold bg-button-bg text-black hover:bg-[#ddc660] hover:text-white cursor-pointer mt-5 ' />
+
                             </form>
                         </div>
                     </div>
