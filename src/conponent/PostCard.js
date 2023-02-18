@@ -1,11 +1,28 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, redirect, useNavigate } from 'react-router-dom';
 
-const PostCard = ({obj,index}) => {
+const PostCard = ({obj,index,isLoggedin}) => {
     const navigate = useNavigate();
     const handleContactTutor = () => {
+        
         navigate(`/contact/tutor/${obj._id}`)
     }
+    // const handleEnrollPayment=() => {
+    //     console.log("Button Clicked for enroll")
+    //     fetch("http://localhost:5000/init",{
+    //         method: 'GET',
+    //         // mode: 'cors', 
+    //         headers: {
+    //         'Content-Type': 'application/json'
+    //         } ,
+    //     })
+    //     .then((res) => res.json())
+    //     .then( (result) => console.log(result))
+    //     // navigate('localhost:5000/init')
+    // }
+    
+
+    
     return (
         <div>
             <div key={index} className="hero m-4 w-[300px] bg-base-200 rounded-2xl shadow-md">
@@ -21,7 +38,15 @@ const PostCard = ({obj,index}) => {
                                 {obj.topicDescription && <p className="py-2 text-justify ">{obj.topicDescription}</p>}
                             </div>
                             <div className='flex gap-6' >
-                                <button  className="btn-1" >Enroll Now</button>
+                                {/* <button  className="btn-1" onClick={handleEnrollPayment}>Enroll Now</button> */}
+                                {
+                                    !isLoggedin &&  
+                                    <a href='#' className={'btn'}>Enroll </a>
+                                }
+                                {
+                                    isLoggedin &&
+                                    <a href='http://localhost:5000/init' className='btn'  >Enroll </a>
+                                }
                                 <button  className="btn-1" onClick={handleContactTutor}>Contact Tutor</button>
                             </div>
                         </div>

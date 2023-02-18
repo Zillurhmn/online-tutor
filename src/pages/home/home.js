@@ -5,7 +5,7 @@ import PostCard from '../../conponent/PostCard';
 
 import s1 from './../../images/s1.png'
 
-const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery, newPost }) => {
+const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery, newPost,isLoggedin }) => {
     
     const [reloadPosts, setReloadPosts] = useState(0)
     const [results, setResults] = useState();
@@ -91,11 +91,11 @@ const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery, newPost }) => {
 
                     {/* =========================Random post After Fetching Data============================= */}
                     {
-                        !results && Allposts && Allposts.map((obj,i)=> (<PostCard obj={obj} index={i} key={i}/>)) 
+                        !results && Allposts && Allposts.map((obj,i)=> (<PostCard isLoggedin={isLoggedin} obj={obj} index={i} key={i}/>)) 
                     }
                     {
                     // ========================= Search Query All Results=============================================
-                        searchQuery && results && results.map((obj,i)=><PostCard obj={obj} index={i} key={i}/>)
+                        searchQuery && results && results.map((obj,i)=><PostCard isLoggedin={isLoggedin} obj={obj} index={i} key={i}/>)
                     }
                     {
                         !Allposts && 
