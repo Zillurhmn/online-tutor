@@ -72,7 +72,7 @@ const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery, newPost }) => {
                             <div className='flex justify-center '>
                                 <input  onChange={onValueChange} type="search" placeholder="Search Tutor" 
                                 className="input input-bordered mr-5 border-[#E6C229] pl-5" />
-                                <input onClick={enqury} type="button" value="Search" className='btn-1'/>
+                                <input onClick={enqury} type="button" value="Search" className='btn-1 hover:cursor-pointer'/>
                             </div>
 
                         </div>
