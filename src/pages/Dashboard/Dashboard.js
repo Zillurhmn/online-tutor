@@ -24,8 +24,8 @@ const Dashboard = (user, setUser,isLoggedin) => {
         <div  className=' min-h-screen'>
             <div className='flex justify-around bg-slate-100 p-5'>
                 <div className='w-[300px]'>
-                    <h1 className='text-xl font-semibold'>Welcome to Dashboard!</h1>
-                    { userObj.name && <h1 className='text-sm py-1'><span className='font-bold '>Name: </span> {userObj.name}</h1>}
+                    <h1 className='text-xl font-semibold'>Welcome to {userObj.name}!</h1>
+                    {/* { userObj.name && <h1 className='text-sm py-1'><span className='font-bold '>Name: </span> {userObj.name}</h1>} */}
                     { userObj.education &&   <h1 className='text-sm py-1'><span className='font-bold '>Completed: </span>{userObj.education}</h1>}
                     {userObj.subject && <h1 className='text-sm py-1'><span className='font-bold '>Expertise: </span>{userObj.subject}</h1>}
                     {userObj.email && <h1 className='text-sm py-1'><span className='font-bold '> Email: </span>{userObj.email}</h1>}
