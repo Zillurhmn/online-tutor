@@ -41,7 +41,7 @@ const PostCard = ({obj,index,isLoggedin}) => {
                                 {/* <button  className="btn-1" onClick={handleEnrollPayment}>Enroll Now</button> */}
                                 {
                                     !isLoggedin &&  
-                                    <a href='#' className={'btn'}>Enroll </a>
+                                    <Link to={"/login"} className={'btn'}>Enroll </Link>
                                 }
                                 {
                                     isLoggedin &&

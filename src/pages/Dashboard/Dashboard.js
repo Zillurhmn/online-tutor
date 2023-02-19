@@ -1,22 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiFillSetting } from 'react-icons/ai';
 import { BiSearchAlt } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
 import Post from './../../conponent/Post'
 
 
-const Dashboard = (user, setUser,isLoggedin) => {
+const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     
     const navigate = useNavigate()
     const [courseCompleteStatus, setCourseCompleteStatus] = useState(false)
     const handleComplete =()=>{
         setCourseCompleteStatus(true)
     }
-    const userObj = user.user[0];
-    // console.log(" User Full DAta",userObj)
-    // console.log(" User id",userObj._id)
+    useEffect(()=>{
+        if(!user){
+            if(JSON.parse(localStorage.getItem('userloginData'))){
+                console.log("find user data in local storage")
+                setUser(JSON.parse(localStorage.getItem('userloginData')));
+                setIsLoggedin(JSON.parse(localStorage.getItem('userloginData'))?true:false)
+                console.log("user set to ",user);
+            }
+        }
+    },[user,setIsLoggedin,setUser])
+
+    const userObj = user?.user[0];
     const actor = userObj.user;
-    // console.log("Dashboard User status", actor)
+
     const handleCreatePost = ()=>{
         navigate("/create-post")
     }
@@ -24,11 +33,11 @@ const Dashboard = (user, setUser,isLoggedin) => {
         <div  className=' min-h-screen'>
             <div className='flex justify-around bg-slate-100 p-5'>
                 <div className='w-[300px]'>
-                    <h1 className='text-xl font-semibold'>Welcome to {userObj.name}!</h1>
+                    <h1 className='text-xl font-semibold'>Welcome to {userObj?.name || 'Name'}!</h1>
                     {/* { userObj.name && <h1 className='text-sm py-1'><span className='font-bold '>Name: </span> {userObj.name}</h1>} */}
-                    { userObj.education &&   <h1 className='text-sm py-1'><span className='font-bold '>Completed: </span>{userObj.education}</h1>}
-                    {userObj.subject && <h1 className='text-sm py-1'><span className='font-bold '>Expertise: </span>{userObj.subject}</h1>}
-                    {userObj.email && <h1 className='text-sm py-1'><span className='font-bold '> Email: </span>{userObj.email}</h1>}
+                    { userObj.education &&   <h1 className='text-sm py-1'><span className='font-bold '>Completed: </span>{userObj?.education || 'Education Status'}</h1>}
+                    {userObj.subject && <h1 className='text-sm py-1'><span className='font-bold '>Expertise: </span>{userObj?.subject || "Subject "}</h1>}
+                    {userObj.email && <h1 className='text-sm py-1'><span className='font-bold '> Email: </span>{userObj?.email || "Email "}</h1>}
                 </div>
                              
                 <div>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Footer from '../../conponent/Footer/footer';
 import Navbar from '../../conponent/Navbar/navbar';
 import About from '../about/about';
@@ -16,7 +16,6 @@ import ContactTutor from '../contactTutor/ContactTutor';
 import CreatePost from '../createPost/CreatePost';
 
 const Webpages = () => {
-    
     const [user, setUser] = useState(null);
 //login true or false
     const [isLoggedin, setIsLoggedin] = useState(false);
@@ -30,14 +29,14 @@ const Webpages = () => {
     const [newPost, setNewPost] = useState(null);
     return (
         <>
-            <Navbar isLoggedin={isLoggedin} HandleUserLog={HandleUserLog}  setUser={setUser}  setAdmin={setAdmin} admin={admin} />
+            <Navbar isLoggedin={isLoggedin} HandleUserLog={HandleUserLog}  setUser={setUser} user={user}  setAdmin={setAdmin} admin={admin} />
             
             <Routes>
-                <Route path="/" element={<Home newPost={newPost}    searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin} Allposts={Allposts} setAllposts={setAllposts} />} />
+                <Route path="/" element={<Home newPost={newPost}    searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin} Allposts={Allposts} setAllposts={setAllposts} setUser={setUser} user={user} />} />
                 {/* <Route path="search" element={<Search Allposts={Allposts} searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin}/>} /> */}
                 <Route path="contact" element={<Contact />} />
                 <Route path="about" element={<About />} />
-                <Route path="dashboard" element={<Dashboard user={user} setUser={setUser} isLoggedin={isLoggedin}/>} />
+                <Route path="dashboard" element={<Dashboard user={user} setUser={setUser} isLoggedin={isLoggedin}  setIsLoggedin={setIsLoggedin} />} />
                 <Route path='editProfile' element={<EditProfile user={user} setUser={setUser} isLoggedin={isLoggedin} /> } />                
                 <Route path="login" element={<Login HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
                 <Route path="signup" element={<Signup HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />

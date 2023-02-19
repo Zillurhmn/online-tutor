@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import {  useNavigate } from 'react-router-dom';
+import {  json, useNavigate } from 'react-router-dom';
 
 const Login = ({HandleUserLog,isLoggedin,user,setUser}) => {
     const navigate = useNavigate();
 
     const [loginSucced, setloginSucced] = useState(false)
-    useEffect(() => {
-      if(user){
-        navigate('/dashboard')
-      }
-    }, [user,loginSucced])
-    
+        useEffect(() => {
+        if(user){
+            localStorage.setItem('userLoginData', JSON.stringify(user))
+
+            navigate('/dashboard')
+        }
+        }, [user,loginSucced])
+        
 
     const loginSubmit = e =>{
         
@@ -41,7 +43,10 @@ const Login = ({HandleUserLog,isLoggedin,user,setUser}) => {
                 setUser(userData)
                 setloginSucced(true)
                 HandleUserLog(true)
-                if(user){ navigate("/dashboard") ; console.log("user is true")}
+                if(user){ navigate("/dashboard") ; 
+                console.log("user is true")
+
+            }
                 else{console.log("user is false")}
                 
             }

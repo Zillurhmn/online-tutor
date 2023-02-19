@@ -18,6 +18,7 @@ const CreatePost = ({user,newPost,setNewPost}) => {
         const amount = e.target.amount.value;
         const topicDescription = e.target.topicDescription.value;
         const keyword = e.target.keyword.value;
+        const meetingLink = e.target.meetingLink.value;
         const tutorId = obj._id ;
         const name = obj.name;
         const education = obj.education;
@@ -32,6 +33,7 @@ const CreatePost = ({user,newPost,setNewPost}) => {
             name:name,
             education:education,
             subject:subject,
+            meetingLink:meetingLink,
         }
         console.log(NewPostObj)
         setNewPost(NewPostObj)
@@ -58,6 +60,7 @@ const CreatePost = ({user,newPost,setNewPost}) => {
         e.target.amount.value = "";
         e.target.topicDescription.value = "";
         e.target.keyword.value = "";
+        e.target.meetingLink.value = "";
         
         setNewPost(null)
 
@@ -75,6 +78,8 @@ const CreatePost = ({user,newPost,setNewPost}) => {
                         <input type="number" placeholder={"Price"} name='amount'  className="input input-bordered mb-5 mt-3 w-[90%]"  required />
                         <br />
                         <input type="text" placeholder={"Keyword"} name={'keyword'}  className="input input-bordered mb-5 mt-3 w-[90%]"  required />
+                        <br />
+                        <input type="text" placeholder={"Meeting Link"} name={'meetingLink'}  className="input input-bordered mb-5 mt-3 w-[90%]"  required />
                         <br />
                         <textarea name='topicDescription' placeholder="Enter Post Description" className='border p-2 text-gray-600 rounded-lg w-[90%]' id="description" cols="30" rows="10" required></textarea>
                         <input  type="submit" value={"Submit Post"} className='w-32 h-10 border-0 rounded font-semibold bg-button-bg text-black hover:bg-[#ddc660] hover:text-white cursor-pointer mt-5 ' />

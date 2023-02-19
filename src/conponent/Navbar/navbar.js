@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from '../../images/a.jpg';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import '../../styles/Button/button.css';
 
-const Navbar = ({isLoggedin,HandleUserLog,setUser,setAdmin,admin}) => {
+const Navbar = ({isLoggedin,HandleUserLog,user,setUser,setAdmin,admin}) => {
     const navigate = useNavigate();
     
     const handleLogOut=()=>{
@@ -11,7 +11,9 @@ const Navbar = ({isLoggedin,HandleUserLog,setUser,setAdmin,admin}) => {
         setAdmin(false)
         setUser(null)
         navigate("/")
+        localStorage.setItem('userLoginData', null)
     }
+     
     return (
         <>
             <nav className="navbar md:flex justify-between  bg-[#E6C229] px-8">

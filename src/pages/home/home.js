@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PostCard from '../../conponent/PostCard';
 
 import s1 from './../../images/s1.png'
 
-const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery, newPost,isLoggedin }) => {
-    
+const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery, newPost,isLoggedin,setUser,user,setIsLoggedin }) => {
+    const navigate = useNavigate();
     const [reloadPosts, setReloadPosts] = useState(0)
     const [results, setResults] = useState();
 
@@ -27,6 +28,17 @@ const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery, newPost,isLogged
         if(!newPost){fetchPosts()}
         // fetchPosts()
         console.log( "All posts ",Allposts)
+        const userData = JSON.parse(localStorage.getItem('userLoginData'));
+        if(userData){
+            console.log("find user data in local storage")
+            setUser(userData);
+            console.log("user set to ",user);
+            setIsLoggedin(true)
+            // navigate('/dashboard');
+        }else{
+            console.log("user not found !");
+        }
+       
     }, [reloadPosts,newPost])
     
     const onValueChange = (e) => {
