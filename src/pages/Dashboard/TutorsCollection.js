@@ -8,7 +8,7 @@ const TutorsCollection = ({id,tutorsPosts,setDeletePost}) => {
         <div className='flex flex-wrap justify-center items-center w-full'>
             {
                 tutorsPosts.map((post,i)=>{
-                    console.log("Post si",post)
+                    // console.log("Post si",post)
                     return(<TutorPost post={post} setDeletePost={setDeletePost}/>)
                 })
             }
