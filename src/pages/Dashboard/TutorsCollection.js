@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import TutorPost from './TutorPost';
 
-const TutorsCollection = ({id,tutorsPosts}) => {
+const TutorsCollection = ({id,tutorsPosts,setDeletePost}) => {
 
     // console.log("Find Tutors Post",typeof(tutorsPosts))
     return (
@@ -9,7 +9,7 @@ const TutorsCollection = ({id,tutorsPosts}) => {
             {
                 tutorsPosts.map((post,i)=>{
                     console.log("Post si",post)
-                    return(<TutorPost post={post}/>)
+                    return(<TutorPost post={post} setDeletePost={setDeletePost}/>)
                 })
             }
             {/* <PostCard /> */}

@@ -1,11 +1,20 @@
 import React from 'react';
 
-const TutorPost = ({post}) => {
+const TutorPost = ({post,setDeletePost}) => {
+    const id = post._id;
     const handleEditPost =()=>{
         alert("Request for Edit Post")
     }
     const handleDeletePost=()=>{
         alert("Request for Delete Post");
+        fetch(`http://localhost:5000/Deletepost/${id}`,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            } ,
+        })
+        .then((res) => res.json())
+        .then((result) => setDeletePost(result))
     }
 
     return (
