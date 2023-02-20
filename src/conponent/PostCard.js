@@ -7,21 +7,7 @@ const PostCard = ({obj,index,isLoggedin}) => {
         
         navigate(`/contact/tutor/${obj._id}`)
     }
-    // const handleEnrollPayment=() => {
-    //     console.log("Button Clicked for enroll")
-    //     fetch("http://localhost:5000/init",{
-    //         method: 'GET',
-    //         // mode: 'cors', 
-    //         headers: {
-    //         'Content-Type': 'application/json'
-    //         } ,
-    //     })
-    //     .then((res) => res.json())
-    //     .then( (result) => console.log(result))
-    //     // navigate('localhost:5000/init')
-    // }
     
-
     
     return (
         <div>
@@ -38,7 +24,6 @@ const PostCard = ({obj,index,isLoggedin}) => {
                                 {obj.topicDescription && <p className="py-2 text-justify ">{obj.topicDescription}</p>}
                             </div>
                             <div className='flex gap-6' >
-                                {/* <button  className="btn-1" onClick={handleEnrollPayment}>Enroll Now</button> */}
                                 {
                                     !isLoggedin &&  
                                     <Link to={"/login"} className={'btn'}>Enroll </Link>

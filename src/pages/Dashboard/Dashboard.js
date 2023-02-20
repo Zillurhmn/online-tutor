@@ -3,12 +3,14 @@ import { AiFillSetting } from 'react-icons/ai';
 import { BiSearchAlt } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
 import Post from './../../conponent/Post'
+import TutorsCollection from './TutorsCollection';
 
 
 const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     
     const navigate = useNavigate()
     const [courseCompleteStatus, setCourseCompleteStatus] = useState(false)
+    const [tutorsPosts, setTutorsPosts] = useState([]);
     const handleComplete =()=>{
         setCourseCompleteStatus(true)
     }
@@ -21,11 +23,25 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
                 console.log("user set to ",user);
             }
         }
+
     },[user,setIsLoggedin,setUser])
 
     const userObj = user?.user[0];
     const actor = userObj.user;
-
+    const id = userObj._id;
+//===========================================Fetching Tutors post===================================
+    useEffect(()=>{
+        if(actor === 'tutor'){
+            fetch(`http://localhost:5000/posts/${id}`,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                } ,
+            })
+            .then((res) => res.json())
+            .then((result) => setTutorsPosts(result))
+        }
+    },[id])
     const handleCreatePost = ()=>{
         navigate("/create-post")
     }
@@ -96,21 +112,16 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     {/* -------------------All the Enrolled / post  will be here ----------------------------*/}
                     {
                         actor === "tutor" && 
-                        <div>
+                        <div className='p-10 w-full'>
+                            <TutorsCollection  tutorsPosts={tutorsPosts}/>
+                        </div>
+                    }
+                    {
+                        !tutorsPosts && 
                             <div className='text-center text-lg mb-80'>
                                 You do not have any post yet! Post Now!
                             </div>
-
-                        </div>
                     }
-
-                    {/* <div>
-                        <Post user={'tutor'} name={"Md. Z Rahman"} subject={"subject here"}
-                            amount={"$223"} description={"Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi."}  
-                            backgroud={"Educational Background"} complete={"true/false"}
-                            classTime={"12:00pm - 02:30pm"} totalTime={"6hour"} totalReview={"12"} star={"3"} 
-                            classLink={"classlinkwillbe given"}  handleComplete={handleComplete} courseCompleteStatus={courseCompleteStatus}/>
-                    </div> */}
                 </div>
             }
 
