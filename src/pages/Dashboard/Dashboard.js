@@ -12,6 +12,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     const [courseCompleteStatus, setCourseCompleteStatus] = useState(false)
     const [tutorsPosts, setTutorsPosts] = useState([]);
     const [deletePost, setDeletePost] = useState(null)
+    const [updatePost, setUpdatePost] = useState(null)
     const handleComplete =()=>{
         setCourseCompleteStatus(true)
     }
@@ -42,7 +43,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
             .then((res) => res.json())
             .then((result) => setTutorsPosts(result))
         }
-    },[id,deletePost])
+    },[id,deletePost,updatePost])
     const handleCreatePost = ()=>{
         navigate("/create-post")
     }
@@ -114,7 +115,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
                     {
                         actor === "tutor" && 
                         <div className='p-10 w-full'>
-                            <TutorsCollection  tutorsPosts={tutorsPosts} setDeletePost={setDeletePost}/>
+                            <TutorsCollection  tutorsPosts={tutorsPosts} setDeletePost={setDeletePost} setUpdatePost={setUpdatePost}/>
                         </div>
                     }
                     {

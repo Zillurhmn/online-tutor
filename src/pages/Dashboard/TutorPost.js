@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import EditPost from './EditPost';
 
-const TutorPost = ({post,setDeletePost}) => {
+const TutorPost = ({post,setDeletePost,setUpdatePost}) => {
     const [isEdit, setIsEdit] = useState(false);
     const id = post._id;
     const handleEditPost =()=>{
@@ -29,38 +29,38 @@ const TutorPost = ({post,setDeletePost}) => {
         const topicDescription = e.target.topicDescription.value;
         const keyword = e.target.keyword.value;
         const meetingLink = e.target.meetingLink.value;
-        const tutorId = obj._id ;
-        const name = obj.name;
-        const education = obj.education;
-        const subject = obj.subject;
-        const editPost = {...post,
+        // const tutorId = obj._id ;
+        // const name = obj.name;
+        // const education = obj.education;
+        // const subject = obj.subject;
+        const editPost = {
             topicName : topicName,
             totalTime : totalTime,
             amount : amount,
             topicDescription: topicDescription,
             keyword:keyword,
-            tutorId:tutorId,
-            name:name,
-            education:education,
-            subject:subject,
             meetingLink:meetingLink,
+            // tutorId:tutorId,
+            // name:name,
+            // education:education,
+            // subject:subject,
         }
         const url = `http://localhost:5000/editpost/${id}`
         console.log("Fetching URL is",url)
-        //  fetch(url,{
-        //     method: 'POST',
-        //     headers: { 
-        //         'Accept': 'application/json',
-        //         'Content-type': 'application/json', 
-        //         "Access-Control-Allow-Origin": "*"
-        //     },
-        //     body: JSON.stringify(editPost),
-        // })
-        //     .then((res) => res.json())
-        //     .then(EditedPost => {
-        //         console.log("new post", EditedPost)
-        //     })
-        //   .catch(e=> console.log("Error is", e))
+         fetch(url,{
+            method: 'POST',
+            headers: { 
+                'Accept': 'application/json',
+                'Content-type': 'application/json', 
+                "Access-Control-Allow-Origin": "*"
+            },
+            body: JSON.stringify(editPost),
+        })
+            .then((res) => res.json())
+            .then(EditedPost => {
+                setUpdatePost(EditedPost)
+            })
+          .catch(e=> console.log("Error is", e))
 
         console.log(editPost)
         setIsEdit(false)
