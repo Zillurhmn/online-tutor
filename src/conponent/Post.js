@@ -1,58 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import p1 from './../images/p1.png'
 
-const Post = ({user, name, subject, amount, description,
-     classTime, totalTime, totalReview, star,
-     classLink, courseCompleteStatus, handleComplete}) => {
+const Post = ({enrollData,handleReviewForm}) => {
+    // console.log("Enroll Data",enrollData)
+    const [isMarkComplete, setIsMarkComplete] = useState(false)
 
+    const handleMarkComplete =()=>{
+        setIsMarkComplete(!isMarkComplete)
+    }
+    const handleGoToClass =()=>{
+        alert("Go to Class Now")
+    }
     return (
-        <div>
+        <div className='w-full flex justify-center items-center'>
             {/* -------------------All the Enrolled / post  will be here ----------------------------*/}
-            <div className='m-10 p-5 flex flex-col justify-center items-center gap-10'>
-                        <div className="hero w-3/4 bg-base-200 rounded-2xl">
-                            <div className="hero-content flex-col lg:flex-row">
-                                {/* <img src={p1} className="h-w-64 w-64" alt='img' /> */}
-                                <div className='py-5'>
-                                    <h1 className="text-xl font-bold text-[#e6c229]">{name}</h1>
-                                    <h1 className='text-lg'> {subject}</h1>
-                                    <h1 className='text-lg font-bold'> {amount}</h1>
-                                    <p className="py-2">{description}</p>
-                                    <p className="py text-sm">Education Background</p>
-                                    <br />
-                                    <div className='flex text-sm text-slate-600 py-2 gap-1'>
-                                        <p className='font-bold'>Class Time :</p>
-                                        <p> {classTime}</p>
+            <div className='m-10 p-5 flex flex-col justify-start w-[700px] shadow-xl rounded bg-sky-100'>
+                                    <h1 className="text-2xl font-bold text-[#e6c229]">{enrollData?.topicName}</h1>
+                                    <h1 className='text-lg font-bold'> {enrollData?.name}</h1>
+                                    <h1 className='text-lg '> {enrollData?.education}</h1>
+                                    <p className="py-5">{enrollData?.topicDescription}</p>
+                                    <p className=" text-sm font-bold">Enroll Fee: {enrollData?.amount}/-</p>
+                                    <p className='font-bold mb-5'>Class Duration : {enrollData?.totalTime} hour</p>
+                                    <div>
+                                        <button onClick={handleGoToClass}  disabled={isMarkComplete?true:false} className="btn-1">Go to Class</button>
+                                        <button onClick={handleMarkComplete}  className="p-3 rounded-md mx-2 text-slate-900  bg-green-600" >
+                                            Mark Complete
+                                        </button>                                    
                                     </div>
-                                    <div className='flex text-sm text-slate-600 py-2 gap-1'>
-                                        <p className='font-bold'>Total Time :</p>
-                                        <p>{totalTime}</p>
-                                    </div>
-                                    <div className='flex text-sm text-slate-600 py-2 gap-1'>
-                                        <p className='font-bold'>Total Review :</p>
-                                        <p> {star} Star ({totalReview} reviews)</p>
-                                    </div>
-                                    <br />
                                     {
-                                        user === 'tutor' &&
-                                        <button className="btn-1">Edit Post</button>
+                                        isMarkComplete &&
+                                        <div className='pt-5'>
+                                            <form onSubmit={handleReviewForm}>
+                                                <input type="text" placeholder={"Give a Review"} name='review'  className="input input-bordered mb-5 mt-3 w-[90%]"  required />
+                                                <br />
+                                                <input  type="submit" value={"Give Review"} className='w-32 h-10 border-0 rounded font-semibold bg-button-bg text-black hover:bg-[#ddc660] hover:text-white cursor-pointer mt-5 ' />
+
+                                            </form>
+                                        </div>
                                     }
-                                    {
-                                        user !== 'tutor' &&
-                                        <>
-                                        {
-                                        !courseCompleteStatus &&
-                                        <button className="btn-1">Go to Class</button>
-                                        }
-                                        <button onClick={handleComplete} className="p-3 rounded-md mx-2 text-slate-900  bg-green-600" >
-                                            {!courseCompleteStatus && 'Mark Complete'}
-                                            { courseCompleteStatus && 'Complete'}
-                                        </button>
-                                        </>
-                                        
-                                    }
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
         </div>
     );

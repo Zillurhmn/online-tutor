@@ -16,6 +16,8 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     const [updatePost, setUpdatePost] = useState(null)
     const [isEditProfile, setIsEditProfile] = useState(false)
     const [profileEditData, setProfileEditData] = useState(null)
+    const [enrollData, setEnrollData] = useState([])
+    const [isReview, setIsReview] = useState(false)
     const handleComplete =()=>{
         setCourseCompleteStatus(true)
     }
@@ -37,7 +39,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     const userObj = user.user;
     const actor = userObj.user;
     const id = userObj._id;
-//===========================================Fetching Tutors post===================================
+//===========================================Fetching Tutors post/ Student Enrollment===================================
     useEffect(()=>{
         if(actor === 'tutor'){
             fetch(`http://localhost:5000/posts/${id}`,{
@@ -49,15 +51,31 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
             .then((res) => res.json())
             .then((result) => setTutorsPosts(result))
         }
+        if(actor === 'student'){
+            fetch(`http://localhost:5000/enrollData/${id}`,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                } ,
+            })
+            .then((res) => res.json())
+            .then((result) => setEnrollData(result))//setEnrollData(result)
+        }
     },[id,deletePost,updatePost,profileEditData])
     const handleCreatePost = ()=>{
         navigate("/create-post")
+    }
+    const handleReviewForm=(e)=>{
+        e.preventDefault();
+        const review = e.target.review;
+
     }
     return (
         <div  className=' min-h-screen'>
             <div className='flex justify-around bg-slate-100 p-5'>
                 <div className='w-[300px]'>
                     <h1 className='text-xl font-semibold'>Welcome to {userObj?.name || 'Name'}!</h1>
+                    <h1 className='text-xl font-semibold'>Id {userObj?._id || 'id'}</h1>
                     {/* { userObj.name && <h1 className='text-sm py-1'><span className='font-bold '>Name: </span> {userObj.name}</h1>} */}
                     { userObj.education &&   <h1 className='text-sm py-1'><span className='font-bold '>Completed: </span>{userObj?.education || 'Education Status'}</h1>}
                     {userObj.subject && <h1 className='text-sm py-1'><span className='font-bold '>Expertise: </span>{userObj?.subject || "Subject "}</h1>}
@@ -70,7 +88,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
             </div>
 {/* -------------Profile Edit Options---------------------------------------------- */}
             {
-                isEditProfile && <ProfileEdit setProfileEditData={setProfileEditData} userObj={userObj}/>
+                isEditProfile && <ProfileEdit setProfileEditData={setProfileEditData} userObj={userObj} />
             }
 
 
@@ -89,13 +107,13 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     {/* -------------------All the Enrolled / post  will be here ----------------------------*/}
                     <div>
                         {
-                            userObj.enrollment ?
-                            <Post user={'student'} name={"Md. Z R"} subject={"subject here"}
-                                amount={"$223"} description={"Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi."}  
-                                backgroud={"Educational Background"} complete={"true/false"}
-                                classTime={"12:00pm - 02:30pm"} totalTime={"6hour"} totalReview={"12"} star={"3"} 
-                                classLink={"classlinkwillbe given"} handleComplete={handleComplete} courseCompleteStatus={courseCompleteStatus} />
-                            :
+                            actor ==="student" &&
+                            enrollData.map(obj=> 
+                                <Post enrollData={obj} handleReviewForm={handleReviewForm}/>
+                                )
+                            }
+                        { 
+                        !enrollData && (actor ==='student') &&
                             <div className=' text-2xl text-center'>
                                 <p>
                                     Ops you don't have done any class yet!
@@ -105,7 +123,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
                                 </Link> 
                                 
                             </div>
-                            }
+                        }
                     </div>
                 </div>
             }
