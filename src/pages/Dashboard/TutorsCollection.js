@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import TutorPost from './TutorPost';
 
 const TutorsCollection = ({id,tutorsPosts,setDeletePost,setUpdatePost}) => {
@@ -12,7 +12,6 @@ const TutorsCollection = ({id,tutorsPosts,setDeletePost,setUpdatePost}) => {
                     return(<TutorPost post={post} setDeletePost={setDeletePost} setUpdatePost={setUpdatePost}/>)
                 })
             }
-            {/* <PostCard /> */}
         </div>
     );
 };

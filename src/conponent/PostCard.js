@@ -1,8 +1,13 @@
 import React from 'react';
-import { Link, redirect, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const PostCard = ({obj,index,isLoggedin}) => {
+const PostCard = ({obj,index,isLoggedin,user}) => {
+
     const navigate = useNavigate();
+    // const userObj = user?.user[0];
+    // const actor = userObj.user;
+    // const studentId = userObj?._id;
+
     const handleContactTutor = () => {
         
         navigate(`/contact/tutor/${obj._id}`)
@@ -29,8 +34,8 @@ const PostCard = ({obj,index,isLoggedin}) => {
                                     <Link to={"/login"} className={'btn'}>Enroll </Link>
                                 }
                                 {
-                                    isLoggedin &&
-                                    <a href='http://localhost:5000/init' className='btn'  >Enroll </a>
+                                    isLoggedin && (user?.user === "student")&& user&&
+                                    <a href={`http://localhost:5000/init/${obj._id}/${user?._id}`} className='btn'  >Enroll </a>
                                 }
                                 <button  className="btn-1" onClick={handleContactTutor}>Contact Tutor</button>
                             </div>

@@ -10,7 +10,7 @@ const EditPost = ({post,handleEditPost}) => {
                 <br />
                 <input type="number" placeholder={"Total Time"} name='totalTime' defaultValue={post?.totalTime || ""}  className="input input-bordered mb-5 mt-3 w-[90%]" required />
                 <br />
-                <input type="number" placeholder={"Price"} name='amount' vadefaultValuelue={post?.amount || ""}  className="input input-bordered mb-5 mt-3 w-[90%]"  required />
+                <input type="number" placeholder={"Price"} name='amount' defaultValue={post?.amount || ""}  className="input input-bordered mb-5 mt-3 w-[90%]"  required />
                 <br />
                 <input type="text" placeholder={"Keyword"} name={'keyword'} defaultValue={post?.keyword || ""} className="input input-bordered mb-5 mt-3 w-[90%]"  required />
                 <br />

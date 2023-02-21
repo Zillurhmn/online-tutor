@@ -43,11 +43,12 @@ const Login = ({HandleUserLog,isLoggedin,user,setUser}) => {
                 setUser(userData)
                 setloginSucced(true)
                 HandleUserLog(true)
-                if(user){ navigate("/dashboard") ; 
-                console.log("user is true")
-
-            }
-                else{console.log("user is false")}
+                if(user){ 
+                    navigate("/dashboard") ; 
+                    console.log("user is true")
+                }else{
+                    console.log("user is false")
+                }
                 
             }
             else{

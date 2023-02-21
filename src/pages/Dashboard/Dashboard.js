@@ -3,6 +3,7 @@ import { AiFillSetting } from 'react-icons/ai';
 import { BiSearchAlt } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
 import Post from './../../conponent/Post'
+import ProfileEdit from './ProfileEdit';
 import TutorsCollection from './TutorsCollection';
 
 
@@ -13,8 +14,13 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     const [tutorsPosts, setTutorsPosts] = useState([]);
     const [deletePost, setDeletePost] = useState(null)
     const [updatePost, setUpdatePost] = useState(null)
+    const [isEditProfile, setIsEditProfile] = useState(false)
+    const [profileEditData, setProfileEditData] = useState(null)
     const handleComplete =()=>{
         setCourseCompleteStatus(true)
+    }
+    const handleSetIsEditProfile =()=>{
+        setIsEditProfile(!isEditProfile)
     }
     useEffect(()=>{
         if(!user){
@@ -27,8 +33,8 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
         }
 
     },[user,setIsLoggedin,setUser])
-
-    const userObj = user?.user[0];
+    console.log("users Data is", user)
+    const userObj = user.user;
     const actor = userObj.user;
     const id = userObj._id;
 //===========================================Fetching Tutors post===================================
@@ -43,7 +49,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
             .then((res) => res.json())
             .then((result) => setTutorsPosts(result))
         }
-    },[id,deletePost,updatePost])
+    },[id,deletePost,updatePost,profileEditData])
     const handleCreatePost = ()=>{
         navigate("/create-post")
     }
@@ -56,17 +62,18 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
                     { userObj.education &&   <h1 className='text-sm py-1'><span className='font-bold '>Completed: </span>{userObj?.education || 'Education Status'}</h1>}
                     {userObj.subject && <h1 className='text-sm py-1'><span className='font-bold '>Expertise: </span>{userObj?.subject || "Subject "}</h1>}
                     {userObj.email && <h1 className='text-sm py-1'><span className='font-bold '> Email: </span>{userObj?.email || "Email "}</h1>}
+                    {userObj.description && <h1 className='text-sm py-1'><span className='font-bold '> Description: </span>{userObj?.description || "Email "}</h1>}
                 </div>
-                             
-                <div>
-                    <Link to={'/editProfile'}>
-                        <div className='m-4'>
-                            <AiFillSetting className=' text-3xl cursor-pointer hover:scale-110 hover:text-slate-500  transition-all ease-in'/>
-                        </div>
-                    </Link>
-                    
-                </div>
+                <div className='m-4' onClick={handleSetIsEditProfile}>
+                    <AiFillSetting className=' text-3xl cursor-pointer hover:scale-110 hover:text-slate-500  transition-all ease-in'/>
+                </div>                    
             </div>
+{/* -------------Profile Edit Options---------------------------------------------- */}
+            {
+                isEditProfile && <ProfileEdit setProfileEditData={setProfileEditData} userObj={userObj}/>
+            }
+
+
 {/* ---------Student Enronment Section Starts Here--------------------------- */}
             {
                 (actor === 'student') &&

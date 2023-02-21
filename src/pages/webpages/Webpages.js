@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import React, {  useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Footer from '../../conponent/Footer/footer';
 import Navbar from '../../conponent/Navbar/navbar';
 import About from '../about/about';
@@ -9,9 +9,7 @@ import Dashboard from '../Dashboard/Dashboard';
 import Home from '../home/home';
 import Login from '../Login/login';
 import Signup from '../Login/signup';
-import Blog from '../blogs/blogs';
 import Profile from './../profile/Profile'
-import EditProfile from '../editprofile/EditProfile';
 import ContactTutor from '../contactTutor/ContactTutor';
 import CreatePost from '../createPost/CreatePost';
 
@@ -37,19 +35,14 @@ const Webpages = () => {
                 <Route path="contact" element={<Contact />} />
                 <Route path="about" element={<About />} />
                 <Route path="dashboard" element={<Dashboard user={user} setUser={setUser} isLoggedin={isLoggedin}  setIsLoggedin={setIsLoggedin} />} />
-                <Route path='editProfile' element={<EditProfile user={user} setUser={setUser} isLoggedin={isLoggedin} /> } />                
+                {/* <Route path='editProfile' element={<EditProfile user={user} setUser={setUser} isLoggedin={isLoggedin} /> } />                 */}
                 <Route path="login" element={<Login HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
                 <Route path="signup" element={<Signup HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
                 <Route path="admin" element={<Admin  admin={admin} setAdmin={setAdmin} isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin}/>} 
                     deleteUser={deleteUser} setDeleteUser={setDeleteUser}  />
-                {/* <Route path="/blogs" element={<Blog />} /> */}
                 <Route path="profile/:id" element={<Profile/>} />
                 <Route path="create-post" element={<CreatePost user={user} setNewPost={setNewPost} newPost={newPost}/>} />
                 <Route path='contact/tutor/:postId' element={<ContactTutor Allposts={Allposts} />} />
-                {/* <Route element={<PrivateRoute/>}>
-                        <Route path="/student" element={<Student />} />
-                </Route> */}
-                
             </Routes>
             
             <Footer/>
