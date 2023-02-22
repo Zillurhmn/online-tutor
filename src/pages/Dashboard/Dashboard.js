@@ -10,17 +10,14 @@ import TutorsCollection from './TutorsCollection';
 const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     
     const navigate = useNavigate()
-    const [courseCompleteStatus, setCourseCompleteStatus] = useState(false)
     const [tutorsPosts, setTutorsPosts] = useState([]);
     const [deletePost, setDeletePost] = useState(null)
     const [updatePost, setUpdatePost] = useState(null)
     const [isEditProfile, setIsEditProfile] = useState(false)
     const [profileEditData, setProfileEditData] = useState(null)
     const [enrollData, setEnrollData] = useState([])
-    const [isReview, setIsReview] = useState(false)
-    const handleComplete =()=>{
-        setCourseCompleteStatus(true)
-    }
+    // const [isReview, setIsReview] = useState(false)
+    
     const handleSetIsEditProfile =()=>{
         setIsEditProfile(!isEditProfile)
     }
@@ -65,11 +62,9 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     const handleCreatePost = ()=>{
         navigate("/create-post")
     }
-    const handleReviewForm=(e)=>{
-        e.preventDefault();
-        const review = e.target.review;
-        console.log(review)
-    }
+    
+    
+    
     return (
         <div  className=' min-h-screen'>
             <div className='flex justify-around bg-slate-100 p-5'>
@@ -109,7 +104,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
                         {
                             actor ==="student" &&
                             enrollData.map(obj=> 
-                                <Post enrollData={obj} handleReviewForm={handleReviewForm}/>
+                                <Post enrollData={obj} id={id} userName={userObj.name} />
                                 )
                             }
                         { 
