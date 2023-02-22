@@ -27,22 +27,22 @@ const ProfileEdit = ({setProfileEditData, userObj}) => {
         }
         const url = `http://localhost:5000/${(user === "tutor")?"editTutorProfile":"editStudentProfile"}/${id}`
         console.log("Fetching URL is",url)
-        //  fetch(url,{
-        //     method: 'POST',
-        //     headers: { 
-        //         'Accept': 'application/json',
-        //         'Content-type': 'application/json', 
-        //         "Access-Control-Allow-Origin": "*"
-        //     },
-            // body: JSON.stringify(editPost),
-        // })
-        //     .then((res) => res.json())
-        //     .then(EditedPost => {
-        //         setProfileEditData(EditedPost)
-        //     })
-        //   .catch(e=> console.log("Error is", e))
+         fetch(url,{
+            method: 'POST',
+            headers: { 
+                'Accept': 'application/json',
+                'Content-type': 'application/json', 
+                "Access-Control-Allow-Origin": "*"
+            },
+            body: JSON.stringify((user === 'tutor')?newTutorProfile:newStudentProfile),
+        })
+            .then((res) => res.json())
+            .then(EditedPost => {
+                setProfileEditData(EditedPost)
+            })
+          .catch(e=> console.log("Error is", e))
 
-        // console.log(editPost)
+        console.log("user sending body is", (user === 'tutor')?newTutorProfile:newStudentProfile)
 
     }
     return (

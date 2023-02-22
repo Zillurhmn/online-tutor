@@ -12,6 +12,7 @@ import Signup from '../Login/signup';
 import Profile from './../profile/Profile'
 import ContactTutor from '../contactTutor/ContactTutor';
 import CreatePost from '../createPost/CreatePost';
+import Chat from '../../conponent/chatting/Chat';
 
 const Webpages = () => {
     const [user, setUser] = useState(null);
@@ -43,6 +44,7 @@ const Webpages = () => {
                 <Route path="profile/:id" element={<Profile/>} />
                 <Route path="create-post" element={<CreatePost user={user} setNewPost={setNewPost} newPost={newPost}/>} />
                 <Route path='contact/tutor/:postId' element={<ContactTutor Allposts={Allposts} />} />
+                <Route path="chats" element={<Chat />}/>
             </Routes>
             
             <Footer/>

@@ -16,7 +16,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     const [isEditProfile, setIsEditProfile] = useState(false)
     const [profileEditData, setProfileEditData] = useState(null)
     const [enrollData, setEnrollData] = useState([])
-    // const [isReview, setIsReview] = useState(false)
+    const [isReviewData, setIsReviewData] = useState()
     
     const handleSetIsEditProfile =()=>{
         setIsEditProfile(!isEditProfile)
@@ -58,7 +58,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
             .then((res) => res.json())
             .then((result) => setEnrollData(result)) //setEnrollData(result)
         }
-    },[id,deletePost,updatePost,profileEditData])
+    },[id,deletePost,updatePost,profileEditData,isReviewData])
     const handleCreatePost = ()=>{
         navigate("/create-post")
     }
@@ -104,7 +104,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
                         {
                             actor ==="student" &&
                             enrollData.map(obj=> 
-                                <Post enrollData={obj} id={id} userName={userObj.name} />
+                                <Post enrollData={obj} id={id} userName={userObj.name} setIsReviewData={setIsReviewData} isReviewData={isReviewData} />
                                 )
                             }
                         { 

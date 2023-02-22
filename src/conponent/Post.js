@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-const Post = ({enrollData,id,userName}) => {
-    console.log("Enroll Data",enrollData)
+const Post = ({enrollData,id,userName,setIsReviewData,isReviewData}) => {
+    // console.log("Enroll Data",enrollData)
     const [isMarkComplete, setIsMarkComplete] = useState(false)
     const [isReview,setIsReview] = useState();
 
@@ -22,7 +22,7 @@ const Post = ({enrollData,id,userName}) => {
             name:userName,
             complete:true
         }
-        console.log("url is ",`http://localhost:5000/review/${enrollData._id}/${id}`)
+        // console.log("url is ",`http://localhost:5000/review/${enrollData._id}/${id}`)
         // console.log("user ReviewData", reviewData);
         fetch(`http://localhost:5000/review/${enrollData._id}/${id}`,{
             method: 'POST',
@@ -35,18 +35,19 @@ const Post = ({enrollData,id,userName}) => {
         })
             // .then(res => alert(res.status))
           .then((res) => res.json())
-          .then(data=>console.log("Response data",data))
+          .then(data=>setIsReviewData("Response data",data))
         
         e.target.review.value = ""
-        //  setIsReview(true)
+         setIsReview(true)
+         setIsMarkComplete(false)
     }
     useEffect(()=>{
         const reviewDone = enrollData.enroll.filter(obj=> obj.id === id)
-        console.log(reviewDone,"reviewDone data")
+        // console.log(reviewDone,"reviewDone data")
         if(reviewDone[0].review.length > 5){
             setIsReview(true)
         }
-    },[])
+    },[isReviewData])
     
     
     return (
