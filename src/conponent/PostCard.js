@@ -10,7 +10,7 @@ const PostCard = ({obj,index,isLoggedin,user}) => {
 
     const handleContactTutor = () => {
         
-        navigate(`/contact/tutor/${obj._id}`)
+        navigate(`/chats/${obj.tutorId}`)
     }
     
     

@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
     const navigate = useNavigate();
     const {postId} = useParams();
     const obj = Allposts.find(obj=> obj._id === postId);
-    console.log("Object is ",obj)
+    // console.log("Object is ",obj)
 
     const handleTutorProfile = ()=>{
         navigate("/")

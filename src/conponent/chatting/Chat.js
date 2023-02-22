@@ -1,16 +1,17 @@
 import React from 'react';
+// import { useParams } from 'react-router-dom';
+import Chatboard from './Chatboard';
+import ChatLists from './ChatLists';
 
 const Chat = () => {
+
     return (
         <div className='flex flex-row justify-center w-full bg-gray-300'>
-            <div className='w-[350px]  flex flex-col'> 
-                <div className='p-3 border rounded text-xl font-bold p shadow-xl m-2 bg-gray-200 hover:bg-gray-400 transition ease-in-out '>Name sdfs</div>
-                <div className='p-3 border rounded text-xl font-bold p shadow-xl m-2 bg-gray-200 hover:bg-gray-400 transition ease-in-out '>Name sdfs</div>
-                <div className='p-3 border rounded text-xl font-bold p shadow-xl m-2 bg-gray-200 hover:bg-gray-400 transition ease-in-out '> Namesdfs</div>
-                <div className='p-3 border rounded text-xl font-bold p shadow-xl m-2 bg-gray-200 hover:bg-gray-400 transition ease-in-out '>Name sdfs</div>
-                <div className='p-3 border rounded text-xl font-bold p shadow-xl m-2 bg-gray-200 hover:bg-gray-400 transition ease-in-out '> Namesdfs</div>
+
+            <ChatLists/>
+            <div className='w-[65%]     ' > 
+                <Chatboard/>
             </div>
-            <div className='w-[65%] border' > chats</div>
             
         </div>
     );
