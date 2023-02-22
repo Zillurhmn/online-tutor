@@ -5,7 +5,7 @@ import PostCard from '../../conponent/PostCard';
 
 import s1 from './../../images/s1.png'
 
-const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery, newPost,isLoggedin,setUser,user,setIsLoggedin }) => {
+const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery, newPost,isLoggedin,setUser,user,setIsLoggedin ,tutorData,setTutorData}) => {
     const [reloadPosts, setReloadPosts] = useState(0)
     const [results, setResults] = useState();
 
@@ -101,11 +101,11 @@ const Home = ({Allposts,setAllposts,setSearchQuery,searchQuery, newPost,isLogged
 
                     {/* =========================Random post After Fetching Data============================= */}
                     {
-                        !results && Allposts && Allposts.map((obj,i)=> (<PostCard isLoggedin={isLoggedin} obj={obj} index={i} key={i} user={user}/>)) 
+                        !results && Allposts && Allposts.map((obj,i)=> (<PostCard tutorData={tutorData} setTutorData={setTutorData} isLoggedin={isLoggedin} obj={obj} index={i} key={i} user={user}/>)) 
                     }
                     {
                     // ========================= Search Query All Results=============================================
-                        searchQuery && results && results.map((obj,i)=><PostCard isLoggedin={isLoggedin} obj={obj} index={i} key={i} user={user}/>)
+                        searchQuery && results && results.map((obj,i)=><PostCard tutorData={tutorData} setTutorData={setTutorData} isLoggedin={isLoggedin} obj={obj} index={i} key={i} user={user}/>)
                     }
                     {
                         !Allposts && 

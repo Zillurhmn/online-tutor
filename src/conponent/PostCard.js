@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const PostCard = ({obj,index,isLoggedin,user}) => {
+const PostCard = ({obj,index,isLoggedin,user,tutorData,setTutorData}) => {
 
     const navigate = useNavigate();
     // const userObj = user?.user[0];
@@ -9,7 +9,7 @@ const PostCard = ({obj,index,isLoggedin,user}) => {
     // const studentId = userObj?._id;
 
     const handleContactTutor = () => {
-        
+        setTutorData(obj);
         navigate(`/chats/${obj.tutorId}`)
     }
     

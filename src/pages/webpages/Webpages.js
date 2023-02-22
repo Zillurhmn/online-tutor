@@ -19,7 +19,7 @@ const Webpages = () => {
     const [user, setUser] = useState(null);
 //login true or false
     const [isLoggedin, setIsLoggedin] = useState(false);
-
+    const [tutorData, setTutorData] = useState();
     const HandleUserLog=(a)=>setIsLoggedin(a);
     const [Allposts, setAllposts] = useState([])
     const [admin, setAdmin] = useState(false);
@@ -32,7 +32,7 @@ const Webpages = () => {
             <Navbar isLoggedin={isLoggedin} HandleUserLog={HandleUserLog}  setUser={setUser} user={user}  setAdmin={setAdmin} admin={admin} />
             
             <Routes>
-                <Route path="/" element={<Home newPost={newPost}    searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin} Allposts={Allposts} setAllposts={setAllposts} setUser={setUser} user={user} />} />
+                <Route path="/" element={<Home newPost={newPost} tutorData={tutorData} setTutorData={setTutorData}   searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin} Allposts={Allposts} setAllposts={setAllposts} setUser={setUser} user={user} />} />
                 {/* <Route path="search" element={<Search Allposts={Allposts} searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin}/>} /> */}
                 <Route path="contact" element={<Contact />} />
                 <Route path="about" element={<About />} />
@@ -45,8 +45,8 @@ const Webpages = () => {
                 <Route path="profile/:id" element={<Profile/>} />
                 <Route path="create-post" element={<CreatePost user={user} setNewPost={setNewPost} newPost={newPost}/>} />
                 {/* <Route path='contact/tutor/:postId' element={<ContactTutor Allposts={Allposts} />} /> */}
-                <Route path="chats/" element={<Chat />}/>
-                <Route path="chats/:tutorId" element={<SingleChat />}/>
+                <Route path="chats/" element={<Chat user={user} />}/>
+                <Route path="chats/:tutorId" element={<SingleChat user={user} tutorData={tutorData} setTutorData={setTutorData} />}/>
             </Routes>
             
             <Footer/>
