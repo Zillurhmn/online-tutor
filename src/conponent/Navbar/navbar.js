@@ -17,11 +17,11 @@ const Navbar = ({isLoggedin,HandleUserLog,user,setUser,setAdmin,admin}) => {
      
     return (
         <>
-            <nav className="navbar flex flex-col lg:flex-row justify-between  bg-[#E6C229] px-8">
+            <nav className="p-3 flex flex-col lg:flex-row justify-between  bg-[#E6C229]">
                 <Link to="/">
-                    <img src={logo} height={400} width={150} alt="logo" />
+                    <img src={logo} className="w-[150px] h-[50px]" alt="logo" />
                 </Link>
-                <div className="flex">
+                <div className="flex justify-center items-center">
                     
                     <NavLink className='pr-5 text-[#262626] font-semibold text-lg' to="/">Home</NavLink>
                     <NavLink className='pr-5 text-[#262626]  font-semibold text-lg' to="/contact">Contact Us</NavLink>
