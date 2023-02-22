@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProfileEdit = ({setProfileEditData, userObj}) => {
+const ProfileEdit = ({setProfileEditData, setIsEditProfile,userObj,setUser,handleSetIsEditProfile,openEditButton,setOpenEditButton}) => {
     const id = userObj._id;
     const user = userObj.user;
     console.log("user data ", userObj)
@@ -38,12 +38,20 @@ const ProfileEdit = ({setProfileEditData, userObj}) => {
         })
             .then((res) => res.json())
             .then(EditedPost => {
-                setProfileEditData(EditedPost)
+                setProfileEditData(EditedPost);
+                setIsEditProfile(false);
+                setUser(EditedPost);//Setting user Data again
+                handleSetIsEditProfile();
             })
           .catch(e=> console.log("Error is", e))
 
         console.log("user sending body is", (user === 'tutor')?newTutorProfile:newStudentProfile)
-
+     e.target.name.value = "";
+     e.target.email.value ="" ;
+     e.target.subject.value ="";
+     e.target.education.value ="";
+     e.target.description.value ="";
+     setOpenEditButton(false)
     }
     return (
         <>

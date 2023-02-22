@@ -16,7 +16,7 @@ import Chat from '../../conponent/chatting/Chat';
 import SingleChat from '../../conponent/chatting/SingleChat';
 
 const Webpages = () => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState();
 //login true or false
     const [isLoggedin, setIsLoggedin] = useState(false);
     const [tutorData, setTutorData] = useState();

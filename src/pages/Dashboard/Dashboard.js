@@ -14,12 +14,14 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     const [deletePost, setDeletePost] = useState(null)
     const [updatePost, setUpdatePost] = useState(null)
     const [isEditProfile, setIsEditProfile] = useState(false)
+    const [openEditButton, setOpenEditButton] = useState(false)
     const [profileEditData, setProfileEditData] = useState(null)
     const [enrollData, setEnrollData] = useState([])
     const [isReviewData, setIsReviewData] = useState()
     
     const handleSetIsEditProfile =()=>{
         setIsEditProfile(!isEditProfile)
+        setOpenEditButton(true)
     }
     useEffect(()=>{
         if(!user){
@@ -31,11 +33,34 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
             }
         }
 
-    },[user,setIsLoggedin,setUser])
-    console.log("users Data is", user)
-    const userObj = user.user;
-    const actor = userObj.user;
-    const id = userObj._id;
+    },[user,setIsLoggedin])
+    //---------------------Repeat Fetching login Data-------------
+    // useEffect(()=>{
+    //     console.log("previous user is",user.user)
+    //     const userObj = user.user;
+    //     const checkData = {
+    //         email: userObj.email,
+    //         password:userObj.password
+    //     }
+    //     fetch(`http://localhost:5000/login/${actor}`,{
+    //     method: 'POST',
+    //     headers: { 
+    //         'Accept': 'application/json',
+    //         'Content-type': 'application/json', 
+    //         "Access-Control-Allow-Origin": "*"
+    //     },
+    //     body: JSON.stringify(checkData),
+    // })
+    //     // .then(res => alert(res.status))
+    //   .then((res) => res.json() )
+    //   .then(userData => setUser(userData))
+    //   .catch(e=>console.log("Error from dashboard js Fetching ",e))
+
+    // },[setProfileEditData,setIsEditProfile])
+    // console.log("users Data is", user)
+    let userObj = user.user;
+    let actor = userObj.user;
+    let id = userObj._id;
 //===========================================Fetching Tutors post/ Student Enrollment===================================
     useEffect(()=>{
         if(actor === 'tutor'){
@@ -59,6 +84,8 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
             .then((result) => setEnrollData(result)) //setEnrollData(result)
         }
     },[id,deletePost,updatePost,profileEditData,isReviewData])
+
+    
     const handleCreatePost = ()=>{
         navigate("/create-post")
     }
@@ -69,7 +96,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
         <div  className=' min-h-screen'>
             <div className='flex justify-around bg-slate-100 p-5'>
                 <div className='w-[300px]'>
-                    <h1 className='text-xl font-semibold'>Welcome to {userObj?.name || 'Name'}!</h1>
+                    <h1 className='text-xl font-semibold'>Welcome {userObj?.name || 'Name'}!</h1>
                     <h1 className='text-xl font-semibold'>Id {userObj?._id || 'id'}</h1>
                     {/* { userObj.name && <h1 className='text-sm py-1'><span className='font-bold '>Name: </span> {userObj.name}</h1>} */}
                     { userObj?.education  &&   <h1 className='text-sm py-1'><span className='font-bold '>Completed: </span>{userObj.education || 'Education Status'}</h1>}
@@ -83,7 +110,16 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
             </div>
 {/* -------------Profile Edit Options---------------------------------------------- */}
             {
-                isEditProfile && <ProfileEdit setProfileEditData={setProfileEditData} userObj={userObj} />
+                isEditProfile &&  openEditButton &&
+                <ProfileEdit 
+                setProfileEditData={setProfileEditData} 
+                setIsEditProfile={setIsEditProfile}
+                handleSetIsEditProfile={handleSetIsEditProfile} 
+                userObj={userObj} 
+                setUser={setUser}
+                openEditButton={openEditButton}
+                setOpenEditButton={setOpenEditButton}
+                />
             }
 
 
@@ -104,7 +140,12 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
                         {
                             actor ==="student" &&
                             enrollData.map(obj=> 
-                                <Post enrollData={obj} id={id} userName={userObj.name} setIsReviewData={setIsReviewData} isReviewData={isReviewData} />
+                                <Post 
+                                enrollData={obj} 
+                                id={id} 
+                                userName={userObj.name} 
+                                setIsReviewData={setIsReviewData} 
+                                isReviewData={isReviewData} />
                                 )
                             }
                         { 
@@ -135,7 +176,10 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
                     {
                         actor === "tutor" && 
                         <div className='p-10 w-full'>
-                            <TutorsCollection  tutorsPosts={tutorsPosts} setDeletePost={setDeletePost} setUpdatePost={setUpdatePost}/>
+                            <TutorsCollection  
+                            tutorsPosts={tutorsPosts} 
+                            setDeletePost={setDeletePost} 
+                            setUpdatePost={setUpdatePost}/>
                         </div>
                     }
                     {

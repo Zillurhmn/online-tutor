@@ -6,12 +6,15 @@ const CreatePost = ({user,newPost,setNewPost}) => {
     useEffect(() => {
         if(!user){
             navigate('/')
+        }else{
+            console.log("user Data for creating post is ",user)
         }
       
     }, [])
     
     const handleNewPost = (e)=>{
-        const obj = user[0];
+        const obj = user;
+        console.log("boj is",obj)
         e.preventDefault();
         const topicName = e.target.topicName.value;
         const totalTime = e.target.totalTime.value;
