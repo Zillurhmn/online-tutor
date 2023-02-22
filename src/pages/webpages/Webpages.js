@@ -32,21 +32,36 @@ const Webpages = () => {
             <Navbar isLoggedin={isLoggedin} HandleUserLog={HandleUserLog}  setUser={setUser} user={user}  setAdmin={setAdmin} admin={admin} />
             
             <Routes>
-                <Route path="/" element={<Home newPost={newPost} tutorData={tutorData} setTutorData={setTutorData}   searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin} Allposts={Allposts} setAllposts={setAllposts} setUser={setUser} user={user} />} />
+                <Route path="/" element={<Home 
+                        newPost={newPost} tutorData={tutorData} setTutorData={setTutorData}   
+                        searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin} 
+                        setIsLoggedin={setIsLoggedin} Allposts={Allposts} setAllposts={setAllposts} 
+                        setUser={setUser} user={user} />} />
                 {/* <Route path="search" element={<Search Allposts={Allposts} searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoggedin={isLoggedin}/>} /> */}
                 <Route path="contact" element={<Contact />} />
                 <Route path="about" element={<About />} />
-                <Route path="dashboard" element={<Dashboard user={user} setUser={setUser} isLoggedin={isLoggedin}  setIsLoggedin={setIsLoggedin} />} />
+                <Route path="dashboard" element={<Dashboard 
+                        user={user} setUser={setUser} 
+                        isLoggedin={isLoggedin}  setIsLoggedin={setIsLoggedin} />} />
                 {/* <Route path='editProfile' element={<EditProfile user={user} setUser={setUser} isLoggedin={isLoggedin} /> } />                 */}
                 <Route path="login" element={<Login HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
                 <Route path="signup" element={<Signup HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
-                <Route path="admin" element={<Admin  admin={admin} setAdmin={setAdmin} isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin}/>} 
-                    deleteUser={deleteUser} setDeleteUser={setDeleteUser}  />
+                <Route path="admin" element={<Admin  
+                    admin={admin} 
+                    setAdmin={setAdmin} 
+                    isLoggedin={isLoggedin} 
+                    setIsLoggedin={setIsLoggedin}
+                    Allposts={Allposts}
+                    deleteUser={deleteUser} 
+                    setDeleteUser={setDeleteUser}
+                    />} />
                 <Route path="profile/:id" element={<Profile/>} />
                 <Route path="create-post" element={<CreatePost user={user} setNewPost={setNewPost} newPost={newPost}/>} />
                 {/* <Route path='contact/tutor/:postId' element={<ContactTutor Allposts={Allposts} />} /> */}
                 <Route path="chats/" element={<Chat user={user} />}/>
-                <Route path="chats/:tutorId" element={<SingleChat user={user} isLoggedin={isLoggedin} tutorData={tutorData} setTutorData={setTutorData} />}/>
+                <Route path="chats/:tutorId" element={<SingleChat 
+                        user={user} isLoggedin={isLoggedin} 
+                        tutorData={tutorData} setTutorData={setTutorData} />}/>
             </Routes>
             
             <Footer/>
