@@ -59,7 +59,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
                 } ,
             })
             .then((res) => res.json())
-            .then((result) => setEnrollData(result))//setEnrollData(result)
+            .then((result) => setEnrollData(result)) //setEnrollData(result)
         }
     },[id,deletePost,updatePost,profileEditData])
     const handleCreatePost = ()=>{
@@ -68,7 +68,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     const handleReviewForm=(e)=>{
         e.preventDefault();
         const review = e.target.review;
-
+        console.log(review)
     }
     return (
         <div  className=' min-h-screen'>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import p1 from './../images/p1.png'
 
 const Post = ({enrollData,handleReviewForm}) => {
-    // console.log("Enroll Data",enrollData)
+    console.log("Enroll Data",enrollData)
     const [isMarkComplete, setIsMarkComplete] = useState(false)
 
     const handleMarkComplete =()=>{
