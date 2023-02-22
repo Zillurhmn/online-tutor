@@ -79,7 +79,7 @@ const Post = ({enrollData,id,userName,setIsReviewData,isReviewData}) => {
                     {
                         enrollData.enroll.map(ob=> {
                             return (
-                            ob.review.length > 5 ?
+                            ob.review.length > 3 ?
                             <div className='m-4 p-4 bg-gray-600 text-white rounded-lg'>
                                 <div className='py-2'>{ob?.review}</div>
                                 <div className='text-xs font-bold'>{ob?.name}</div>

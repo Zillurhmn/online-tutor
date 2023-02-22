@@ -46,7 +46,7 @@ const Webpages = () => {
                 <Route path="create-post" element={<CreatePost user={user} setNewPost={setNewPost} newPost={newPost}/>} />
                 {/* <Route path='contact/tutor/:postId' element={<ContactTutor Allposts={Allposts} />} /> */}
                 <Route path="chats/" element={<Chat user={user} />}/>
-                <Route path="chats/:tutorId" element={<SingleChat user={user} tutorData={tutorData} setTutorData={setTutorData} />}/>
+                <Route path="chats/:tutorId" element={<SingleChat user={user} isLoggedin={isLoggedin} tutorData={tutorData} setTutorData={setTutorData} />}/>
             </Routes>
             
             <Footer/>
