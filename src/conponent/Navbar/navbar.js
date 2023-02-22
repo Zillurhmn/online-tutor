@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { BsChatRightDots } from 'react-icons/bs';
 import logo from '../../images/a.jpg';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import '../../styles/Button/button.css';
@@ -16,8 +17,8 @@ const Navbar = ({isLoggedin,HandleUserLog,user,setUser,setAdmin,admin}) => {
      
     return (
         <>
-            <nav className="navbar md:flex justify-between  bg-[#E6C229] px-8">
-                <Link className="md:flex" to="/">
+            <nav className="navbar flex flex-col lg:flex-row justify-between  bg-[#E6C229] px-8">
+                <Link to="/">
                     <img src={logo} height={400} width={150} alt="logo" />
                 </Link>
                 <div className="flex">
@@ -34,6 +35,9 @@ const Navbar = ({isLoggedin,HandleUserLog,user,setUser,setAdmin,admin}) => {
                     {
                         isLoggedin ?
                             <>
+                                <Link to='/chats' className='px-5 ' >
+                                    <BsChatRightDots className=' text-3xl text-black'/>
+                                </Link>
                                 <Link className='pr-5 text-[#262626] font-bold text-lg btn_log' to="/">
                                     <span onClick={handleLogOut}>logout</span></Link>
                             </>

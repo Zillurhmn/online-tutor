@@ -72,7 +72,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
                     <h1 className='text-xl font-semibold'>Welcome to {userObj?.name || 'Name'}!</h1>
                     <h1 className='text-xl font-semibold'>Id {userObj?._id || 'id'}</h1>
                     {/* { userObj.name && <h1 className='text-sm py-1'><span className='font-bold '>Name: </span> {userObj.name}</h1>} */}
-                    { userObj.education &&   <h1 className='text-sm py-1'><span className='font-bold '>Completed: </span>{userObj?.education || 'Education Status'}</h1>}
+                    { userObj?.education  &&   <h1 className='text-sm py-1'><span className='font-bold '>Completed: </span>{userObj.education || 'Education Status'}</h1>}
                     {userObj.subject && <h1 className='text-sm py-1'><span className='font-bold '>Expertise: </span>{userObj?.subject || "Subject "}</h1>}
                     {userObj.email && <h1 className='text-sm py-1'><span className='font-bold '> Email: </span>{userObj?.email || "Email "}</h1>}
                     {userObj.description && <h1 className='text-sm py-1'><span className='font-bold '> Description: </span>{userObj?.description || "Email "}</h1>}
