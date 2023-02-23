@@ -8,21 +8,6 @@ const Login = ({HandleUserLog,isLoggedin,user,setUser}) => {
         useEffect(() => {
         if(user){
             localStorage.setItem('userLoginData', JSON.stringify(user))
-            //Fetching Again by Obj========================================
-        //     fetch(`http://localhost:5000/login/${user.user}`,{
-        //     method: 'POST',
-        //     headers: { 
-        //         'Accept': 'application/json',
-        //         'Content-type': 'application/json', 
-        //         "Access-Control-Allow-Origin": "*"
-        //     },
-        //     body: JSON.stringify(user),
-        // })
-        //     // .then(res => alert(res.status))
-        //   .then((res) => res.json() )
-        //   .then(userData => setUser(userData))
-        //   .catch(e=>console.log("Error from Login js Fetching"))
-
             navigate('/dashboard')
         }
         }, [user,loginSucced])

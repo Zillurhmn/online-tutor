@@ -34,30 +34,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
         }
 
     },[user,setIsLoggedin])
-    //---------------------Repeat Fetching login Data-------------
-    // useEffect(()=>{
-    //     console.log("previous user is",user.user)
-    //     const userObj = user.user;
-    //     const checkData = {
-    //         email: userObj.email,
-    //         password:userObj.password
-    //     }
-    //     fetch(`http://localhost:5000/login/${actor}`,{
-    //     method: 'POST',
-    //     headers: { 
-    //         'Accept': 'application/json',
-    //         'Content-type': 'application/json', 
-    //         "Access-Control-Allow-Origin": "*"
-    //     },
-    //     body: JSON.stringify(checkData),
-    // })
-    //     // .then(res => alert(res.status))
-    //   .then((res) => res.json() )
-    //   .then(userData => setUser(userData))
-    //   .catch(e=>console.log("Error from dashboard js Fetching ",e))
-
-    // },[setProfileEditData,setIsEditProfile])
-    // console.log("users Data is", user)
+    
     let userObj = user.user;
     let actor = userObj.user;
     let id = userObj._id;

@@ -65,6 +65,7 @@ const Post = ({enrollData,id,userName,setIsReviewData,isReviewData}) => {
                         <button onClick={handleMarkComplete} disabled={isReview?true:false}  className="p-3 rounded-md mx-2 text-slate-900  bg-green-600" >
                             {isReview?'Completed':'Mark Complete'}
                         </button>                                    
+                        <button className="btn bg-red-500">Report</button>
                     </div>
                     {
                         isMarkComplete && 
