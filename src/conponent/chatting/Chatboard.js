@@ -23,6 +23,20 @@ const Chatboard = ({showChat,user,setNewChatReqData,newChatReqData,chatLists}) =
             .then((res) => res.json())
             .then( (result) => setNewChatReqData(result))
         }
+        if(user.user === 'tutor'){
+            console.log("tutor is true")
+            fetch(`http://localhost:5000/chat/tutor/${user._id}/${showChat.studentId}`,{
+                method: 'POST',
+                headers: { 
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json', 
+                    "Access-Control-Allow-Origin": "*"
+                },
+                body: JSON.stringify(msgObj),
+            })
+            .then((res) => res.json())
+            .then( (result) => setNewChatReqData(result))
+        }
         
         e.target.newText.value = "";
     }
