@@ -1,18 +1,37 @@
-import React from 'react';
-// import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import Chatboard from './Chatboard';
 import ChatLists from './ChatLists';
 
-const Chat = () => {
+const Chat = ({user}) => {
+    const [chatLists, setChatLists] = useState(null)
+    const [showChat, setShowChat] = useState(null)
+    const [newChatReqData, setNewChatReqData] = useState(null)
 
+    useEffect(()=>{
+        if(user.user === 'student'){
+            fetch(`http://localhost:5000/chat/student/${user._id}`,{
+                method: 'GET',
+                headers: { 
+                    'Content-type': 'application/json', 
+                }
+            })
+            .then((res) => res.json())
+            .then(data=>{ 
+                console.log(" Student chatting Data",data);
+                setChatLists(data)
+            })
+        }
+    },[newChatReqData])
+    // useEffect(()=>{
+
+
+    // })
     return (
         <div className='flex flex-row justify-center w-full bg-gray-300'>
-
-            <ChatLists/>
-            <div className='w-[65%]     ' > 
-                <Chatboard/>
+            <ChatLists chatLists={chatLists} setShowChat={setShowChat} newChatReqData={newChatReqData} />
+            <div className='w-[65%] ' > 
+                <Chatboard showChat={showChat} user={user} chatLists={chatLists} setNewChatReqData={setNewChatReqData} newChatReqData={newChatReqData}/>
             </div>
-            
         </div>
     );
 };

@@ -10,16 +10,13 @@ const SingleChat = ({user,tutorData,setTutorData,isLoggedin}) => {
         e.preventDefault();
         
         const msg = e.target.newmsg.value;
-        const tutorId= tutorData?.tutorId;
-        const tutorName = tutorData?.name;
-        const userId = user._id;
+        // const tutorId= tutorData?.tutorId;
+        // const tutorName = tutorData?.name;
+        // const userId = user._id;
         const userName = user.name;
         const newChat = {
-            tutorId : tutorId,
-            tutorName: tutorName,
-            studentId:userId,
-            studentName:userName,
-            studentMsg:msg,
+            name:userName,
+            msg:msg,
         }
         fetch(`http://localhost:5000/chat/${user._id}/${tutorData.tutorId}`,{
             method: 'POST',

@@ -30,7 +30,7 @@ const PostCard = ({obj,index,isLoggedin,user,tutorData,setTutorData}) => {
                     <div className='flex gap-6' >
                         {
                             !isLoggedin &&  
-                            <Link to={"/login"} className={'btn'}>Enroll </Link>
+                            <Link to={"/login"} className={'btn'}>Enroll Now</Link>
                         }
                         {
                             isLoggedin && (user?.user === "student")&& user&&
