@@ -12,7 +12,7 @@ const SingleChat = ({user,tutorData,setTutorData,isLoggedin}) => {
         const msg = e.target.newmsg.value;
         // const tutorId= tutorData?.tutorId;
         // const tutorName = tutorData?.name;
-        // const userId = user._id;
+        // const studentId = user._id;
         const userName = user.name;
         const newChat = {
             name:userName,

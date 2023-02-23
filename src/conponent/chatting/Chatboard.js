@@ -10,24 +10,27 @@ const Chatboard = ({showChat,user,setNewChatReqData,newChatReqData,chatLists}) =
             name:name,
             msg:msg
         };
-        fetch(`http://localhost:5000/chat/student/${user._id}/${showChat.tutorId}`,{
-            method: 'POST',
-            headers: { 
-                'Accept': 'application/json',
-                'Content-type': 'application/json', 
-                "Access-Control-Allow-Origin": "*"
-            },
-            body: JSON.stringify(msgObj),
-        })
-        .then((res) => res.json())
-        .then( (result) => setNewChatReqData(result))
+        if(user.user==="student"){
+            fetch(`http://localhost:5000/chat/student/${user._id}/${showChat.tutorId}`,{
+                method: 'POST',
+                headers: { 
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json', 
+                    "Access-Control-Allow-Origin": "*"
+                },
+                body: JSON.stringify(msgObj),
+            })
+            .then((res) => res.json())
+            .then( (result) => setNewChatReqData(result))
+        }
+        
         e.target.newText.value = "";
     }
     return (
         <div className='m-3 border border-slate-900 rounded h-[70vh] p-2'>
             <ChatData showChat={showChat} newChatReqData={newChatReqData} chatLists={chatLists}/>
             <form onSubmit={handleNewMsg}>
-                 <div className='h-[10%] w-full flex justify-center'>
+                 <div className='h-[10%] w-full flex justify-center items-center'>
                     <input type='text' name='newText'  className='w-[79%] m-1 p-3 rounded-md form-control'/>
                     <button type='submit' className='w-[20%] btn ' disabled={(showChat)?false:true}>Sent</button>
                 </div>
