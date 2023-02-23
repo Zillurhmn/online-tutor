@@ -48,7 +48,7 @@ const Chat = ({user}) => {
     // },[getTutorChatlists])
     return (
         <div className='flex flex-row justify-center w-full bg-gray-300'>
-            <ChatLists chatLists={chatLists} setShowChat={setShowChat} newChatReqData={newChatReqData} />
+            <ChatLists user={user} chatLists={chatLists} setShowChat={setShowChat} newChatReqData={newChatReqData} />
             <div className='w-[65%] ' > 
                 <Chatboard showChat={showChat} user={user} chatLists={chatLists} setNewChatReqData={setNewChatReqData} newChatReqData={newChatReqData}/>
             </div>
