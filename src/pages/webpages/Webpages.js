@@ -43,7 +43,8 @@ const Webpages = () => {
                         isLoggedin={isLoggedin}  setIsLoggedin={setIsLoggedin} />} />
                 <Route path="login" element={<Login HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
                 <Route path="signup" element={<Signup HandleUserLog={HandleUserLog} isLoggedin={isLoggedin} user={user} setUser={setUser}/>} />
-                <Route path="admin" element={<Admin  
+                <Route path="admin" 
+                element={<Admin  
                     admin={admin} 
                     setAdmin={setAdmin} 
                     isLoggedin={isLoggedin} 

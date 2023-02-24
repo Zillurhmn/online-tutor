@@ -18,6 +18,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
     const [profileEditData, setProfileEditData] = useState(null)
     const [enrollData, setEnrollData] = useState([])
     const [isReviewData, setIsReviewData] = useState()
+    const [reload, setreload] = useState(false)
     
     const handleSetIsEditProfile =()=>{
         setIsEditProfile(!isEditProfile)
@@ -60,7 +61,7 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
             .then((res) => res.json())
             .then((result) => setEnrollData(result)) //setEnrollData(result)
         }
-    },[id,deletePost,updatePost,profileEditData,isReviewData])
+    },[id,deletePost,updatePost,profileEditData,isReviewData,reload])
 
     
     const handleCreatePost = ()=>{
@@ -123,8 +124,8 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
                                 userName={userObj.name} 
                                 setIsReviewData={setIsReviewData} 
                                 isReviewData={isReviewData} 
-                                // reportButton={reportButton}
-                                // setReportButton={setReportButton}
+                                reload={reload}
+                                setreload={setreload}
                                 />
                                 )
                             }
