@@ -35,9 +35,12 @@ const Navbar = ({isLoggedin,HandleUserLog,user,setUser,setAdmin,admin}) => {
                     {
                         isLoggedin ?
                             <>
+                            {
+                                !admin &&
                                 <Link to='/chats' className='px-5 ' >
                                     <BsChatRightDots className=' text-3xl text-black'/>
                                 </Link>
+                            }
                                 <Link className='pr-5 text-[#262626] font-bold text-lg btn_log' to="/">
                                     <span onClick={handleLogOut}>logout</span></Link>
                             </>

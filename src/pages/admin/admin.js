@@ -11,16 +11,7 @@ function Admin({admin,setAdmin,setIsLoggedin,isLoggedin}) {
   //--delete user data
   const [deleteUser, setDeleteUser] = useState(null);
   const [deletePost, setDeletePost] = useState(null);
-  // console.log("Deleter REquest data ", deleteUser)
-  // useEffect(()=>{
-  //   if(deleteUser?.user === 'student'){
-  //     console.log("request delete student data",deleteUser?._id)
-  //   }
-  //   if(deleteUser?.user === 'tutor'){
-  //     console.log("request delete tutor data. id: ",deleteUser?._id)
-      
-  //   }
-  // },[deleteUser])
+ 
   // ---------------------fetching Students Data=============================
   const fetchStudentsData =()=>{
     fetch("http://localhost:5000/allstudentdb",{
@@ -80,11 +71,10 @@ useEffect(() => {
         .then((res) => res.json())
         .then((result) => console.log(result))
       }
-    fetchAllPostsDB()
-    fetchStudentsData()
-    fetchTutorsData()
-    // console.log(allStudentdb)
-    // console.log(alltutordb)
+      fetchStudentsData()
+      fetchTutorsData()
+      fetchAllPostsDB()
+    
   }
 }, [admin,deletePost,deleteUser])
 return (

@@ -86,7 +86,7 @@ const Post = ({enrollData,id,userName,setIsReviewData,isReviewData,reload,setrel
         }
         useEffect(()=>{
             const ReportDone = enrollData.report?.filter(obj=> obj.id === id)
-            if( ReportDone && ReportDone[0].report?.length ){
+            if( ReportDone && ReportDone[0]?.report?.length ){
                 // console.log("Repost Found")
                 setReport(true)
             }
