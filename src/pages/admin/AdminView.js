@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import UserRow from './UserRow';
 
 
 const AdminView = ({title,data,setDeleteUser,deleteUser}) => {
-    
     return (
         <div>
             <div>

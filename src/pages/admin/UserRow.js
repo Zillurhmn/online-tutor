@@ -2,7 +2,7 @@ import React from 'react';
 
 const UserRow = ({user,i,setDeleteUser,deleteUser}) => {
     const deleteUserDAta =()=>{
-        console.log("Wants to delete", user)
+        // console.log("Wants to delete", user)
         setDeleteUser(user)
         //------Deleting Request will be from here--!!!!
     }

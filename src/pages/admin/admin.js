@@ -12,15 +12,15 @@ function Admin({admin,setAdmin,setIsLoggedin,isLoggedin}) {
   const [deleteUser, setDeleteUser] = useState(null);
   const [deletePost, setDeletePost] = useState(null);
   // console.log("Deleter REquest data ", deleteUser)
-  useEffect(()=>{
-    if(deleteUser?.user === 'student'){
-      console.log("request delete student data",deleteUser?._id)
-    }
-    if(deleteUser?.user === 'tutor'){
-      console.log("request delete tutor data. id: ",deleteUser?._id)
+  // useEffect(()=>{
+  //   if(deleteUser?.user === 'student'){
+  //     console.log("request delete student data",deleteUser?._id)
+  //   }
+  //   if(deleteUser?.user === 'tutor'){
+  //     console.log("request delete tutor data. id: ",deleteUser?._id)
       
-    }
-  },[deleteUser])
+  //   }
+  // },[deleteUser])
   // ---------------------fetching Students Data=============================
   const fetchStudentsData =()=>{
     fetch("http://localhost:5000/allstudentdb",{
@@ -54,10 +54,9 @@ const fetchAllPostsDB =()=>{
 .then((res) => res.json())
 .then( (result) => setAllposts(result))
 }
-//====================Delete Post==============ssssssssssss
 useEffect(() => {
   if(admin){
-    //deletePost
+    //===============deletePost=========================
     if(deletePost){
       console.log("Deleting Post",deletePost._id)
       fetch(`http://localhost:5000/Deletepost/${deletePost._id}`,{
@@ -69,14 +68,25 @@ useEffect(() => {
         .then((res) => res.json())
         .then((result) => console.log(result))
     }
-
+    //================Delete user tutor/ student here==========================
+    if(deleteUser){
+      console.log('request for delete user is',deleteUser)
+      fetch(`http://localhost:5000/Deletepost/${deleteUser?.user}/${deleteUser?._id}`,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            } 
+        })
+        .then((res) => res.json())
+        .then((result) => console.log(result))
+      }
     fetchAllPostsDB()
     fetchStudentsData()
     fetchTutorsData()
     // console.log(allStudentdb)
     // console.log(alltutordb)
   }
-}, [admin,deletePost])
+}, [admin,deletePost,deleteUser])
 return (
     <>
         <h1 className=' text-3xl font-bold text-center p-4'>Admin Dashboard</h1>
