@@ -6,7 +6,8 @@ const Post = ({enrollData,id,userName,setIsReviewData,isReviewData}) => {
     const [isMarkComplete, setIsMarkComplete] = useState(false)
     const [isReview,setIsReview] = useState();
     const [reportButton, setReportButton] = useState(false)
-
+    //Meeting Link
+    const meetingLink  = enrollData.meetingLink;
     const handleMarkComplete =()=>{
         setIsMarkComplete(!isMarkComplete)
     }
@@ -95,7 +96,7 @@ const Post = ({enrollData,id,userName,setIsReviewData,isReviewData}) => {
                     
                     <div>
                         {
-                            !isReview && <a href={enrollData.meetingLink} target='_blank' className='btn-1' rel='noreferrer'>Go to Class</a>
+                            !isReview && <a href={`${meetingLink}`} target='_blank' className='btn-1' >Go to Class</a>
                         }
                         {/* <button onClick={handleGoToClass}  disabled={isReview?true:false} className="btn-1">Go to Class</button> */}
                         <button onClick={handleMarkComplete} disabled={isReview?true:false}  className="p-3 rounded-md mx-2 text-slate-900  bg-green-600" >
