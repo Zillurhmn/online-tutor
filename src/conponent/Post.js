@@ -6,17 +6,16 @@ const Post = ({enrollData,id,userName,setIsReviewData,isReviewData}) => {
     const [isMarkComplete, setIsMarkComplete] = useState(false)
     const [isReview,setIsReview] = useState();
     const [reportButton, setReportButton] = useState(false)
+    const [reportData, setReportData] = useState(null)
+
     //Meeting Link
     const meetingLink  = enrollData.meetingLink;
     const handleMarkComplete =()=>{
         setIsMarkComplete(!isMarkComplete)
     }
-    const handleGoToClass =()=>{
-        alert("Go to Class Now")
-        redirect(enrollData.meetingLink)
-    }
+    
     const handleReportClick = ()=>{
-        setReportButton(true)
+        setReportButton(!reportButton)
     }
     
     const handleReviewForm=(e)=>{
@@ -51,7 +50,7 @@ const Post = ({enrollData,id,userName,setIsReviewData,isReviewData}) => {
     useEffect(()=>{
         const reviewDone = enrollData.enroll.filter(obj=> obj.id === id)
         // console.log(reviewDone,"reviewDone data")
-        if(reviewDone[0].review.length > 5){
+        if(reviewDone[0].review?.length > 5){
             setIsReview(true)
         }
     },[isReviewData])
@@ -67,18 +66,18 @@ const Post = ({enrollData,id,userName,setIsReviewData,isReviewData}) => {
             name:userName,
         }
         console.log(reportData);
-        // fetch(`http://localhost:5000/report/${enrollData._id}/${id}`,{
-        //     method: 'POST',
-        //     headers: { 
-        //         'Accept': 'application/json',
-        //         'Content-type': 'application/json', 
-        //         "Access-Control-Allow-Origin": "*"
-        //     },
-        //     body: JSON.stringify(reportData),
-        // })
-        //     // .then(res => alert(res.status))
-        //   .then((res) => res.json())
-        //   .then(data=>console.log("Response data",data))
+        fetch(`http://localhost:5000/report/${enrollData._id}/${id}`,{
+            method: 'POST',
+            headers: { 
+                'Accept': 'application/json',
+                'Content-type': 'application/json', 
+                "Access-Control-Allow-Origin": "*"
+            },
+            body: JSON.stringify(reportData),
+        })
+            // .then(res => alert(res.status))
+          .then((res) => res.json())
+          .then(data=>setReportData(data))
           e.target.report.value = ""
           setReportButton(false)
     }
@@ -102,7 +101,10 @@ const Post = ({enrollData,id,userName,setIsReviewData,isReviewData}) => {
                         <button onClick={handleMarkComplete} disabled={isReview?true:false}  className="p-3 rounded-md mx-2 text-slate-900  bg-green-600" >
                             {isReview?'Completed':'Mark Complete'}
                         </button>                                    
-                        <button onClick={handleReportClick} className="btn bg-red-500">Report</button>
+                        <button onClick={handleReportClick} className="btn bg-red-500">
+                            {
+                        reportData?'Reported !':'Report'}
+                        </button>
                     </div>
                     {//====================Review Form================
                         isMarkComplete && 
@@ -125,9 +127,9 @@ const Post = ({enrollData,id,userName,setIsReviewData,isReviewData}) => {
                         </div>
                     }
                     {
-                        enrollData.enroll.map(ob=> {
+                        enrollData && enrollData.enroll.map(ob=> {
                             return (
-                            ob.review.length > 3 ?
+                            ob.review?.length > 3 ?
                             <div className='m-4 p-4 bg-gray-600 text-white rounded-lg'>
                                 <div className='py-2'>{ob?.review}</div>
                                 <div className='text-xs font-bold'>{ob?.name}</div>
