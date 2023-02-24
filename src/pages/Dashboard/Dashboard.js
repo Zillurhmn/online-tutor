@@ -122,7 +122,10 @@ const Dashboard = (user, setUser,isLoggedin,setIsLoggedin) => {
                                 id={id} 
                                 userName={userObj.name} 
                                 setIsReviewData={setIsReviewData} 
-                                isReviewData={isReviewData} />
+                                isReviewData={isReviewData} 
+                                // reportButton={reportButton}
+                                // setReportButton={setReportButton}
+                                />
                                 )
                             }
                         { 

@@ -22,7 +22,7 @@ const Login = ({HandleUserLog,isLoggedin,user,setUser}) => {
             password: e.target.password.value,
             user: e.target.user.value
         }
-        // console.log("Temp User-", tempUser)
+        console.log("Temp User-", tempUser)
         e.target.email.value = "";
         e.target.password.value = "";
         fetch(`http://localhost:5000/login/${tempUser.user}`,{
