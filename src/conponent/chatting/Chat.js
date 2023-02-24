@@ -6,7 +6,6 @@ const Chat = ({user}) => {
     const [chatLists, setChatLists] = useState(null)
     const [showChat, setShowChat] = useState(null)
     const [newChatReqData, setNewChatReqData] = useState(null)
-    const [getTutorChatlists, setGetTutorChatlists] = useState(null)
 
     useEffect(()=>{
         if(user.user === 'student'){
@@ -36,16 +35,6 @@ const Chat = ({user}) => {
             })
         }
     },[newChatReqData])
-    // useEffect(()=>{
-    //     // console.log("found tutors msg data",getTutorChatlists)
-    //     getTutorChatlists.map(user=>{
-    //         user.chats.map(tutorObj=>{
-    //             if(tutorObj.tutorId === user._id){
-    //                 console.log("found tutors msg",tutorObj)
-    //             }
-    //         })
-    //     })
-    // },[getTutorChatlists])
     return (
         <div className='flex flex-row justify-center w-full bg-gray-300'>
             <ChatLists user={user} chatLists={chatLists} setShowChat={setShowChat} newChatReqData={newChatReqData} />

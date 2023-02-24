@@ -12,7 +12,8 @@ const ChatLists = ({chatLists,setShowChat,newChatReqData,user}) => {
                     ))
              }
              {
-                !chatLists && <div>No Msg!</div>
+                !chatLists && <div className='p-3  rounded text-xl font-bold p shadow-xl m-2
+                bg-gray-200 hover:bg-gray-400 transition ease-in-out hover:cursor-pointer'>No Msg!</div>
              }
             </div>
         </div>
