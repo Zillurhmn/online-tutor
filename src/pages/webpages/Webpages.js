@@ -9,7 +9,7 @@ import Dashboard from '../Dashboard/Dashboard';
 import Home from '../home/home';
 import Login from '../Login/login';
 import Signup from '../Login/signup';
-import Profile from './../profile/Profile'
+// import Profile from './../profile/Profile'
 import CreatePost from '../createPost/CreatePost';
 import Chat from '../../conponent/chatting/Chat';
 import SingleChat from '../../conponent/chatting/SingleChat';
@@ -22,7 +22,6 @@ const Webpages = () => {
     const HandleUserLog=(a)=>setIsLoggedin(a);
     const [Allposts, setAllposts] = useState([])
     const [admin, setAdmin] = useState(false);
-    const [deleteUser, setDeleteUser] = useState(null);
 //Search Query value store-------------------------------------
     const [searchQuery, setSearchQuery] = useState("")
     const [newPost, setNewPost] = useState(null);
@@ -50,10 +49,9 @@ const Webpages = () => {
                     isLoggedin={isLoggedin} 
                     setIsLoggedin={setIsLoggedin}
                     Allposts={Allposts}
-                    deleteUser={deleteUser} 
-                    setDeleteUser={setDeleteUser}
+                    
                     />} />
-                <Route path="profile/:id" element={<Profile/>} />
+                {/* <Route path="profile/:id" element={<Profile/>} /> */}
                 <Route path="create-post" element={<CreatePost user={user} setNewPost={setNewPost} newPost={newPost}/>} />
                 <Route path="chats/" element={<Chat user={user} />}/>
                 <Route path="chats/:tutorId" element={<SingleChat 
